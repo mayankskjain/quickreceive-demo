@@ -1,30 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QuickReceive — Joby Aviation</title>
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --color-background-primary:#ffffff;--color-background-secondary:#f9fafb;
-  --color-background-tertiary:#f3f4f6;--color-text-primary:#111827;
-  --color-text-secondary:#6b7280;--color-text-tertiary:#9ca3af;
-  --color-border-tertiary:rgba(0,0,0,0.12);--color-border-secondary:rgba(0,0,0,0.18);
-  --font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
-  --border-radius-md:8px;--border-radius-lg:12px;
-}
-@media(prefers-color-scheme:dark){:root{
-  --color-background-primary:#1f2937;--color-background-secondary:#111827;
-  --color-background-tertiary:#0f172a;--color-text-primary:#f9fafb;
-  --color-text-secondary:#9ca3af;--color-text-tertiary:#6b7280;
-  --color-border-tertiary:rgba(255,255,255,0.1);--color-border-secondary:rgba(255,255,255,0.16);
-}}
-body{font-family:var(--font-sans);font-size:13px;color:var(--color-text-primary);background:var(--color-background-tertiary);overflow:hidden}
-.app{display:flex;height:100vh}
+body{font-family:var(--font-sans);font-size:13px;color:var(--color-text-primary);background:var(--color-background-tertiary)}
+.app{display:flex;height:100vh;min-height:640px}
 .sb{width:190px;background:var(--color-background-primary);border-right:0.5px solid var(--color-border-tertiary);display:flex;flex-direction:column;flex-shrink:0;overflow-y:auto}
 .sb-logo{padding:13px 15px;border-bottom:0.5px solid var(--color-border-tertiary)}
-.sb-t{font-size:14px;font-weight:500}.sb-s{font-size:10px;color:var(--color-text-tertiary);margin-top:1px}
+.sb-t{font-size:14px;font-weight:500;color:var(--color-text-primary)}
+.sb-s{font-size:10px;color:var(--color-text-tertiary);margin-top:1px}
 .nav{display:flex;align-items:center;gap:8px;padding:9px 13px;cursor:pointer;font-size:12px;color:var(--color-text-secondary);border-left:2px solid transparent;transition:all .12s;user-select:none}
 .nav:hover{background:var(--color-background-secondary);color:var(--color-text-primary)}
 .nav.on{border-left-color:#185FA5;background:#E6F1FB;color:#0C447C;font-weight:500}
@@ -32,14 +14,17 @@ body{font-family:var(--font-sans);font-size:13px;color:var(--color-text-primary)
 .sb-user{padding:10px 13px}
 .main{flex:1;overflow-y:auto;display:flex;flex-direction:column;min-width:0}
 .topbar{background:var(--color-background-primary);border-bottom:0.5px solid var(--color-border-tertiary);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
-.pt{font-size:15px;font-weight:500}.content{padding:16px;flex:1}
+.pt{font-size:15px;font-weight:500;color:var(--color-text-primary)}
+.content{padding:16px;flex:1}
 .card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:14px;margin-bottom:12px}
+.card:last-child{margin-bottom:0}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
 .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
 .mc{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:12px}
 .mc-l{font-size:10px;color:var(--color-text-tertiary);margin-bottom:3px}
-.mc-v{font-size:20px;font-weight:500}.mc-s{font-size:10px;margin-top:2px}
+.mc-v{font-size:20px;font-weight:500;color:var(--color-text-primary)}
+.mc-s{font-size:10px;color:var(--color-text-secondary);margin-top:2px}
 .btn{padding:6px 12px;border-radius:var(--border-radius-md);font-size:12px;cursor:pointer;border:0.5px solid var(--color-border-secondary);background:var(--color-background-primary);color:var(--color-text-primary);font-family:var(--font-sans);transition:background .12s}
 .btn:hover{background:var(--color-background-secondary)}
 .btn-p{background:#185FA5;color:#fff;border-color:#185FA5}.btn-p:hover{background:#0C447C}
@@ -59,7 +44,8 @@ label{font-size:11px;color:var(--color-text-secondary);display:block;margin-bott
 table{width:100%;border-collapse:collapse;font-size:12px}
 th{text-align:left;padding:7px 9px;font-size:10px;font-weight:500;color:var(--color-text-secondary);border-bottom:0.5px solid var(--color-border-tertiary);background:var(--color-background-secondary)}
 td{padding:7px 9px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-primary)}
-tr:last-child td{border-bottom:none}tr:hover td{background:var(--color-background-secondary)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--color-background-secondary)}
 .pb{height:5px;background:var(--color-background-secondary);border-radius:3px;overflow:hidden}
 .pbf{height:100%;border-radius:3px;background:#185FA5;transition:width .3s}
 .scan-box{background:#0d1526;border-radius:var(--border-radius-lg);padding:13px;position:relative;overflow:hidden;min-height:260px}
@@ -91,10 +77,10 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--color-backgroun
 .aic.best{border-color:#3B6D11;background:#EAF3DE}
 .modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:flex;align-items:center;justify-content:center;padding:16px}
 .modal{background:var(--color-background-primary);border-radius:var(--border-radius-lg);padding:20px;width:440px;max-width:100%;border:0.5px solid var(--color-border-secondary);max-height:88vh;overflow-y:auto}
-.modal-t{font-size:14px;font-weight:500;margin-bottom:4px}
+.modal-t{font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px}
 .modal-s{font-size:11px;color:var(--color-text-secondary);margin-bottom:14px}
 .lwrap{display:flex;align-items:center;justify-content:center;min-height:100vh;background:var(--color-background-tertiary)}
-.lcard{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:26px;width:350px}
+.lcard{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:26px;width:360px}
 .toast-c{position:fixed;top:13px;right:13px;z-index:999;display:flex;flex-direction:column;gap:5px;pointer-events:none}
 .toast{padding:8px 12px;border-radius:var(--border-radius-md);font-size:12px;min-width:230px;border:0.5px solid;animation:tin .2s}
 @keyframes tin{from{transform:translateX(10px);opacity:0}to{opacity:1}}
@@ -115,21 +101,32 @@ tr:last-child td{border-bottom:none}tr:hover td{background:var(--color-backgroun
 .bar-f{height:100%;border-radius:3px;background:#185FA5}
 .ov-rc{padding:7px 10px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);cursor:pointer;font-size:11px;margin-bottom:4px;color:var(--color-text-primary)}
 .ov-rc.sel{border-color:#185FA5;background:#E6F1FB;color:#0C447C}
+.qa-item-card{padding:12px;border-radius:var(--border-radius-md);border:0.5px solid #FAC775;background:#FAEEDA;margin-bottom:8px}
+.nps-btn{width:38px;height:38px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);background:var(--color-background-primary);cursor:pointer;font-size:13px;font-weight:500;color:var(--color-text-primary);transition:all .12s}
+.nps-btn:hover{border-color:#185FA5;background:#E6F1FB;color:#0C447C}
+.nps-btn.sel{border-color:#185FA5;background:#185FA5;color:#fff}
+.nps-detractor .nps-btn:hover{border-color:#A32D2D;background:#FCEBEB;color:#791F1F}
+.nps-promoter .nps-btn:hover{border-color:#3B6D11;background:#EAF3DE;color:#27500A}
 </style>
-</head>
-<body>
+
 <div id="root"></div>
 <div class="toast-c" id="toasts"></div>
-<script>
-// ─── STORAGE: localStorage for standalone, window.storage for Claude artifacts ─
-const store={
-  async get(k){try{const v=localStorage.getItem(k);return v?{value:v}:null;}catch(e){return null;}},
-  async set(k,v){try{localStorage.setItem(k,v);return{value:v};}catch(e){return null;}},
-  async delete(k){try{localStorage.removeItem(k);return{deleted:true};}catch(e){return null;}}
-};
 
-const SK={POS:'qr_v4_pos',AUDIT:'qr_v4_audit',NOTIF:'qr_v4_notifs',CSAT:'qr_v4_csat',HIST:'qr_v4_hist'};
+<script>
 const DC=o=>JSON.parse(JSON.stringify(o));
+
+// ─── ROLE PERMISSIONS ─────────────────────────────────────────
+// CAN_RECEIVE: can open POs, scan, commit items
+const CAN_RECEIVE=['receiver','senior_receiver','admin'];
+// CAN_OVERRIDE: supervisor-level corrections
+const CAN_OVERRIDE=['senior_receiver','warehouse_manager','admin'];
+// CAN_CONFIG: admin config panel
+const CAN_CONFIG=['admin'];
+// CAN_CSAT: see CSAT scores and NPS — WH Manager + Admin only
+const CAN_CSAT=['warehouse_manager','admin'];
+// CAN_ANALYTICS: see analytics tab at all
+const CAN_ANALYTICS=['warehouse_manager','admin'];
+// QA Inspector: sees only QA-flagged items across all POs
 
 const USERS=[
   {id:'u1',name:'Alex Chen',email:'alex.chen@joby.com',role:'receiver',dock:'Dock 1',ini:'AC'},
@@ -140,15 +137,12 @@ const USERS=[
 ];
 const RLBL={receiver:'Receiver',senior_receiver:'Senior Receiver',qa_inspector:'QA Inspector',warehouse_manager:'WH Manager',admin:'Admin'};
 const RCOL={receiver:'b-bl',senior_receiver:'b-pu',qa_inspector:'b-tl',warehouse_manager:'b-am',admin:'b-gy'};
-const CAN_OVERRIDE=['senior_receiver','warehouse_manager','admin'];
-const CAN_CONFIG=['admin'];
-const CAN_ANALYTICS=['admin','warehouse_manager','qa_inspector'];
 
 const DEFAULT_POS=[
-  {id:'po1',number:'PO-2026-08844',vendor:'Parker Hannifin',status:'in_progress',total:8,received:3,lines:[
-    {id:'l1',pn:'HAM-FLT-2241-B',desc:'Flight Control Actuator',qty:2,rcvd:2,sn:'4492018-A',status:'received',coc_req:true,coc_ok:false,qa:false,qa_r:''},
+  {id:'po1',number:'PO-2026-08844',vendor:'Parker Hannifin',status:'in_progress',total:8,received:5,lines:[
+    {id:'l1',pn:'HAM-FLT-2241-B',desc:'Flight Control Actuator',qty:2,rcvd:2,sn:'4492018-A',status:'received',coc_req:true,coc_ok:true,qa:false,qa_r:''},
     {id:'l2',pn:'HAM-FLT-2241-C',desc:'Flight Control Actuator Backup',qty:1,rcvd:1,sn:'4492019-B',status:'received',coc_req:true,coc_ok:true,qa:false,qa_r:''},
-    {id:'l3',pn:'HYD-LINE-3310',desc:'Hydraulic Line Assembly',qty:4,rcvd:0,sn:null,status:'pending',coc_req:false,coc_ok:false,qa:false,qa_r:''},
+    {id:'l3',pn:'HYD-LINE-3310',desc:'Hydraulic Line Assembly',qty:4,rcvd:2,sn:null,status:'qa_hold',coc_req:false,coc_ok:false,qa:true,qa_r:'Dimensional variance — measurement required'},
     {id:'l4',pn:'PHX-VALVE-0092',desc:'Pressure Relief Valve',qty:2,rcvd:0,sn:'V-00221-X',status:'pending',coc_req:true,coc_ok:false,qa:false,qa_r:''},
     {id:'l5',pn:'PHX-VALVE-0093',desc:'Check Valve Assembly',qty:1,rcvd:0,sn:'V-00222-A',status:'pending',coc_req:true,coc_ok:false,qa:false,qa_r:''},
     {id:'l6',pn:'SEAL-KIT-4400',desc:'Hydraulic Seal Kit',qty:1,rcvd:0,sn:null,status:'pending',coc_req:false,coc_ok:false,qa:false,qa_r:''},
@@ -164,29 +158,84 @@ const DEFAULT_POS=[
   ]},
   {id:'po3',number:'PO-2026-08831',vendor:'Moog Inc.',status:'ready_to_review',total:3,received:3,lines:[
     {id:'l50',pn:'MOG-SRV-201',desc:'Servo Motor 24VDC',qty:1,rcvd:1,sn:'SN-MOG-1001',status:'received',coc_req:true,coc_ok:true,qa:false,qa_r:''},
-    {id:'l51',pn:'MOG-SRV-202',desc:'Servo Motor 48VDC',qty:1,rcvd:1,sn:'SN-MOG-1002',status:'received',coc_req:true,coc_ok:false,qa:true,qa_r:'Surface finish anomaly observed'},
+    {id:'l51',pn:'MOG-SRV-202',desc:'Servo Motor 48VDC',qty:1,rcvd:1,sn:'SN-MOG-1002',status:'qa_hold',coc_req:true,coc_ok:false,qa:true,qa_r:'Surface finish anomaly — hold for inspection'},
     {id:'l52',pn:'MOG-CTRL-101',desc:'Servo Controller',qty:2,rcvd:2,sn:'SN-MOG-2001',status:'received',coc_req:false,coc_ok:false,qa:false,qa_r:''},
   ]},
 ];
 
-function seedCsat(){const u=['Alex Chen','Sarah Park','Tom Nguyen'];const sc=[5,4,5,3,5,4,5,4,5,5,4,3];return sc.map((s,i)=>({id:`c${i}`,score:s,nps:i%4===0?Math.floor(Math.random()*11):null,user:u[i%3],poNumber:`PO-2026-0${8600+i}`,time:`${8+Math.floor(i*.6)}:${String(Math.floor(Math.random()*60)).padStart(2,'0')}`}));}
-function seedHist(){const u=['Alex Chen','Sarah Park'],v=['Parker Hannifin','Moog Inc.','TransDigm'];return Array.from({length:12},(_,i)=>({id:`h${i}`,poNumber:`PO-2026-0${8600+i}`,vendor:v[i%3],user:u[i%2],total:6+i,received:6+i,scanSuccess:0.84+Math.random()*.14,aiAssists:Math.floor(Math.random()*3),duration:2+Math.random()*6}));}
+// ─── REALISTIC NPS SEED ──────────────────────────────────────
+// NPS is captured every ~30 days, not per session.
+// Promoters = 9-10, Passives = 7-8, Detractors = 0-6
+// Realistic early-adoption scores: mostly promoters with some passives
+function seedCsat(){
+  const u=['Alex Chen','Sarah Park','Tom Nguyen','Mike Davis'];
+  const sc=[5,4,5,4,5,5,4,3,5,4,5,4];
+  return sc.map((s,i)=>({
+    id:`c${i}`,score:s,
+    // NPS only captured monthly — seeded realistically with promoter-skew
+    nps:null, // NPS captured separately — see npsResponses
+    user:u[i%4],poNumber:`PO-2026-0${8600+i}`,
+    time:`${8+Math.floor(i*.5)}:${String(i*7%60).padStart(2,'0')}`
+  }));
+}
+
+// NPS responses — captured quarterly, separate from per-session CSAT
+// Realistic early-adoption product: mostly promoters
+function seedNPS(){
+  const u=['Alex Chen','Sarah Park','Tom Nguyen','Mike Davis'];
+  // Scores: mix of promoters (9-10) and passives (7-8), one detractor
+  const scores=[9,10,8,9,10,7,9,8];
+  return scores.map((s,i)=>({
+    id:`n${i}`,nps:s,
+    label:s>=9?'Promoter':s>=7?'Passive':'Detractor',
+    user:u[i%4],date:`2026-0${Math.floor(i/4)+2}-${String((i%4)*7+1).padStart(2,'0')}`
+  }));
+}
+
+function seedHist(){
+  const u=['Alex Chen','Sarah Park'],v=['Parker Hannifin','Moog Inc.','TransDigm'];
+  return Array.from({length:12},(_,i)=>({
+    id:`h${i}`,poNumber:`PO-2026-0${8600+i}`,vendor:v[i%3],user:u[i%2],
+    total:6+i,received:6+i,scanSuccess:0.84+Math.random()*.14,
+    aiAssists:Math.floor(Math.random()*3),duration:2+Math.random()*6
+  }));
+}
 
 const DEF_CFG={erp:{latencyMs:320,failRate:0.03},scanner:{delayMs:1600,successRate:0.88,partialRate:0.08,aiThresh:0.85},ocr:{procMs:2000,autoMatchThresh:0.90}};
 
-let L={view:'login',user:null,loginStep:'user',selUser:null,activePO:null,activeSess:null,sessLines:[],scanSubView:'select',scanning:false,scanTimer:null,scanLine:null,lastConf:0.91,manualBC:'',btConnected:false,btId:null,showBT:false,showOverride:false,showQA:false,showDmg:false,showCsat:false,qaLine:null,qaReasonInput:'',overrideLine:null,dmgType:'',dmgNote:'',cocFile:null,cocStage:0,cocResult:null,cocTargetLine:null,pfStage:0,pausedSess:[],scanLog:[],config:DC(DEF_CFG),_ovReason:''};
-let SH={pos:DC(DEFAULT_POS),audit:[],notifs:[],csat:seedCsat(),hist:seedHist()};
+let L={
+  view:'login',user:null,loginStep:'user',selUser:null,
+  activePO:null,activeSess:null,sessLines:[],scanSubView:'select',
+  scanning:false,scanTimer:null,scanLine:null,lastConf:0.91,
+  manualBC:'',btConnected:false,btId:null,
+  showBT:false,showOverride:false,showQA:false,showDmg:false,showCsat:false,
+  qaLine:null,qaReasonInput:'',overrideLine:null,
+  dmgType:'',dmgNote:'',
+  cocFile:null,cocStage:0,cocResult:null,cocTargetLine:null,
+  pfStage:0,pausedSess:[],scanLog:[],
+  config:DC(DEF_CFG),_ovReason:'',
+  // NPS modal state (shown after CSAT, bi-monthly cadence)
+  showNPS:false,npsSelected:null,
+};
 
+let SH={
+  pos:DC(DEFAULT_POS),
+  audit:[],notifs:[],
+  csat:seedCsat(),
+  npsResponses:seedNPS(),
+  hist:seedHist(),
+};
+
+// localStorage persistence
+const SK={POS:'qr5_pos',AUDIT:'qr5_audit',NOTIF:'qr5_notifs',CSAT:'qr5_csat',NPS:'qr5_nps',HIST:'qr5_hist'};
 async function loadShared(){
-  try{
-    for(const sk of Object.values(SK)){
-      try{const r=await store.get(sk);if(r&&r.value){const data=JSON.parse(r.value);if(sk===SK.POS)SH.pos=data;else if(sk===SK.AUDIT)SH.audit=data;else if(sk===SK.NOTIF)SH.notifs=data;else if(sk===SK.CSAT)SH.csat=data;else if(sk===SK.HIST)SH.hist=data;}}catch(e){}
-    }
-  }catch(e){}
+  for(const[k,sk]of Object.entries({pos:SK.POS,audit:SK.AUDIT,notifs:SK.NOTIF,csat:SK.CSAT,npsResponses:SK.NPS,hist:SK.HIST})){
+    try{const r=await window.storage.get(sk,true);if(r&&r.value)SH[k]=JSON.parse(r.value);}catch(e){}
+  }
 }
 async function saveShared(keys){
-  const map={[SK.POS]:SH.pos,[SK.AUDIT]:SH.audit,[SK.NOTIF]:SH.notifs,[SK.CSAT]:SH.csat,[SK.HIST]:SH.hist};
-  for(const k of(keys||Object.keys(map))){try{await store.set(k,JSON.stringify(map[k]));}catch(e){}}
+  const map={[SK.POS]:SH.pos,[SK.AUDIT]:SH.audit,[SK.NOTIF]:SH.notifs,[SK.CSAT]:SH.csat,[SK.NPS]:SH.npsResponses,[SK.HIST]:SH.hist};
+  for(const k of(keys||Object.values(SK))){try{await window.storage.set(k,JSON.stringify(map[k]),true);}catch(e){}}
 }
 
 function toast(msg,t='i'){const el=document.createElement('div');el.className=`toast t${t}`;el.textContent=msg;document.getElementById('toasts').appendChild(el);setTimeout(()=>el.remove(),3000);}
@@ -197,72 +246,670 @@ function simScan(line){const r=Math.random(),sr=L.config.scanner.successRate,pr=
 function getAICands(lines){return lines.filter(l=>l.status==='pending').slice(0,3).map((l,i)=>({line:l,conf:Math.max(.42,.97-i*.19),why:['SN pattern + open PO line + vendor history','Open PO line + adjacent part family','Open PO line, prior revision'][i]}));}
 function checkPOComplete(poId){const po=SH.pos.find(p=>p.id===poId);if(!po)return;po.received=po.lines.filter(l=>l.status==='received'||l.status==='qa_hold').length;if(po.received>=po.total&&po.status==='in_progress'){po.status='ready_to_review';toast('All items received — PO ready for finalization','s');pushNotif('✓',`${po.number} — all items received`);saveShared([SK.POS,SK.NOTIF]);}}
 
+// ─── NPS CALCULATION (correct) ────────────────────────────────
+function calcNPS(responses){
+  if(!responses.length)return{score:null,promoters:0,passives:0,detractors:0,total:0};
+  const p=responses.filter(r=>r.nps>=9).length;
+  const d=responses.filter(r=>r.nps<=6).length;
+  const total=responses.length;
+  const score=Math.round((p/total-d/total)*100);
+  return{score,promoters:p,passives:total-p-d,detractors:d,total};
+}
+
 function render(){
   const root=document.getElementById('root');if(!root)return;
   if(L.view==='login'){root.innerHTML=rLogin();return;}
   root.innerHTML=`<div class="app">${rSB()}<div class="main"><div class="topbar"><span class="pt">${pTitle()}</span><div style="display:flex;gap:8px;align-items:center">${L.activeSess?`<span class="badge b-gr">⬤ Session active</span>`:''}<span style="font-size:10px;color:var(--color-text-tertiary)">${new Date().toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'})}</span></div></div><div class="content">${rView()}</div></div></div>`;
   const mods=[];
-  if(L.showBT)mods.push(rBTModal());if(L.showOverride)mods.push(rOverrideModal());
-  if(L.showQA)mods.push(rQAModal());if(L.showDmg)mods.push(rDmgModal());
+  if(L.showBT)mods.push(rBTModal());
+  if(L.showOverride)mods.push(rOverrideModal());
+  if(L.showQA)mods.push(rQAModal());
+  if(L.showDmg)mods.push(rDmgModal());
   if(L.showCsat)mods.push(rCSAT());
+  if(L.showNPS)mods.push(rNPSModal());
   if(mods.length)root.insertAdjacentHTML('beforeend',mods.join(''));
 }
 
-function pTitle(){return{dashboard:'Dashboard',scan:L.activePO?`Receiving \u2014 ${L.activePO.number}`:'Start Session',coc:'COC Upload',analytics:'Analytics',audit:'Audit Log',config:'Configuration'}[L.view]||'QuickReceive';}
-function rView(){return({dashboard:rDash,scan:rScan,coc:rCOC,analytics:rAnalytics,audit:rAudit,config:rConfig}[L.view]||rDash)();}
-
-function rSB(){const u=L.user;const navs=[{v:'dashboard',i:'\u25a6',l:'Dashboard',s:true},{v:'scan',i:'\u2299',l:'Receive',s:['receiver','senior_receiver','admin'].includes(u.role)},{v:'coc',i:'\u229e',l:'COC Upload',s:true},{v:'analytics',i:'\u25c8',l:'Analytics',s:CAN_ANALYTICS.includes(u.role)},{v:'audit',i:'\u2261',l:'Audit Log',s:true},{v:'config',i:'\u2699',l:'Config',s:CAN_CONFIG.includes(u.role)}].filter(n=>n.s);return`<div class="sb"><div class="sb-logo"><div class="sb-t">QuickReceive</div><div class="sb-s">Joby Aviation \u00b7 ${u.dock}</div></div>${navs.map(n=>`<div class="nav ${L.view===n.v?'on':''}" onclick="nav('${n.v}')">${n.i} ${n.l}</div>`).join('')}${L.pausedSess.length?`<div style="margin:8px;padding:8px;background:#FAEEDA;border-radius:var(--border-radius-md);font-size:11px"><span style="color:#633806;font-weight:500">\u23f8 ${L.pausedSess.length} paused</span><br><span style="color:#633806;cursor:pointer;text-decoration:underline" onclick="resumeLatest()">Resume \u2192</span></div>`:''}<div class="sb-foot"><div class="sb-user"><div style="font-size:11px;font-weight:500;color:var(--color-text-primary)">${u.name}</div><div style="font-size:10px;color:var(--color-text-tertiary)">${u.email}</div><span class="badge ${RCOL[u.role]}" style="margin-top:4px">${RLBL[u.role]}</span>${CAN_CONFIG.includes(u.role)?`<div style="margin-top:8px"><button class="btn btn-d btn-sm" style="width:100%" onclick="factoryReset()">\u27f3 Factory reset</button></div>`:''}</div><div class="nav" onclick="logout()">\u23cf Sign out</div></div></div>`;}
-
-function rLogin(){return`<div class="lwrap"><div class="lcard"><div style="font-size:20px;font-weight:500;margin-bottom:2px;color:var(--color-text-primary)">Joby QuickReceive</div><div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:18px">Inventory receiving demo \u00b7 Joby Aviation 2026</div>${L.loginStep==='user'?`<div class="field"><label>Select user account (simulates Okta IDP)</label><select id="sel-u"><option value="">&#8212; select account &#8212;</option>${USERS.map(u=>`<option value="${u.id}">${u.name} (${RLBL[u.role]})</option>`).join('')}</select></div><button class="btn btn-p" style="width:100%;padding:9px" onclick="doOkta()">Continue with Okta SSO \u2192</button><div style="margin-top:10px;font-size:9px;color:var(--color-text-tertiary);text-align:center">SAML 2.0 \u00b7 MFA enforced \u00b7 JWT RS256</div>`:`<div style="text-align:center;margin-bottom:14px"><div style="width:44px;height:44px;border-radius:50%;background:#E6F1FB;display:flex;align-items:center;justify-content:center;font-weight:500;color:#0C447C;font-size:14px;margin:0 auto 6px">${L.selUser?.ini}</div><div style="font-size:13px;font-weight:500;color:var(--color-text-primary)">${L.selUser?.name}</div><div style="font-size:11px;color:var(--color-text-secondary)">${L.selUser?.email}</div></div><div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:11px;margin-bottom:12px"><div style="font-size:10px;font-weight:500;color:var(--color-text-primary);margin-bottom:5px">Okta Verify \u2014 TOTP MFA</div><input id="mfa-in" type="text" placeholder="Enter 6-digit code" maxlength="6" style="text-align:center;font-size:17px;letter-spacing:.3em" onkeydown="if(event.key==='Enter')doMFA()"><div style="font-size:9px;color:var(--color-text-tertiary);margin-top:4px">Any 6 digits for this demo</div></div><button class="btn btn-p" style="width:100%" onclick="doMFA()">Verify &amp; Sign In</button><button class="btn" style="width:100%;margin-top:6px" onclick="L.loginStep='user';render()">\u2190 Back</button>`}</div></div>`;}
-
-function rDash(){const pos=SH.pos;const rcv=pos.filter(p=>p.status==='ready_to_review').length;const done=pos.filter(p=>p.status==='complete').length;const inP=pos.filter(p=>p.status==='in_progress').length;const avgC=SH.csat.length?+(SH.csat.reduce((a,c)=>a+c.score,0)/SH.csat.length).toFixed(1):0;return`<div class="g4" style="margin-bottom:14px"><div class="mc"><div class="mc-l">In progress</div><div class="mc-v" style="color:#633806">${inP}</div></div><div class="mc"><div class="mc-l">Ready to review</div><div class="mc-v" style="color:#185FA5">${rcv}</div>${rcv>0?`<div class="mc-s" style="color:#791F1F">\u26d1 Action required</div>`:''}</div><div class="mc"><div class="mc-l">Completed</div><div class="mc-v" style="color:#27500A">${done}</div></div><div class="mc"><div class="mc-l">CSAT avg</div><div class="mc-v">${avgC}/5</div></div></div><div class="card"><div class="st">Purchase orders<button class="btn btn-p btn-sm" onclick="nav('scan')">+ New session</button></div><table><thead><tr><th>PO Number</th><th>Vendor</th><th>Progress</th><th>COC</th><th>Status</th><th>Action</th></tr></thead><tbody>${pos.map(po=>{const need=po.lines.filter(l=>l.coc_req).length;const done2=po.lines.filter(l=>l.coc_req&&l.coc_ok).length;return`<tr><td style="font-weight:500">${po.number}</td><td style="color:var(--color-text-secondary)">${po.vendor}</td><td style="min-width:120px"><div style="display:flex;align-items:center;gap:6px"><div class="pb" style="flex:1"><div class="pbf" style="width:${Math.round(po.received/po.total*100)}%"></div></div><span style="font-size:11px;color:var(--color-text-secondary)">${po.received}/${po.total}</span></div></td><td><span style="font-size:11px;color:${done2<need&&po.status!=='not_started'?'#791F1F':'var(--color-text-secondary)'}">${done2}/${need}</span></td><td><span class="badge ${po.status==='complete'?'b-gr':po.status==='ready_to_review'?'b-bl':po.status==='in_progress'?'b-am':'b-gy'}">${po.status.replace(/_/g,' ')}</span></td><td>${po.status==='not_started'||po.status==='in_progress'?`<button class="btn btn-sm" onclick="openPO('${po.id}')">Open \u2192</button>`:''}${po.status==='ready_to_review'?`<button class="btn btn-p btn-sm" onclick="openReview('${po.id}')">Review &amp; Finalize \u2192</button>`:''}${po.status==='complete'?`<span style="font-size:11px;color:#27500A">\u2713 Complete</span>`:''}</td></tr>`;}).join('')}</tbody></table></div>${SH.notifs.length?`<div class="card"><div class="st">Recent notifications</div>${SH.notifs.slice(0,5).map(n=>`<div style="display:flex;gap:8px;padding:5px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:11px"><span>${n.icon}</span><span style="color:var(--color-text-tertiary);flex-shrink:0">${n.time}</span><span style="color:var(--color-text-secondary)">${n.text}</span></div>`).join('')}</div>`:''}`;}
-
-function rScan(){if(!L.activePO&&L.scanSubView!=='select')L.scanSubView='select';if(L.scanSubView==='select')return rPOSelect();if(L.scanSubView==='prefetch')return rPrefetch();if(L.scanSubView==='scanning')return rScanMain();if(L.scanSubView==='review')return rReview();return rPOSelect();}
-function rPOList(pos){return pos.map(po=>`<div style="display:flex;align-items:center;gap:10px;padding:10px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);margin-bottom:6px;cursor:pointer" onclick="openPO('${po.id}')" onmouseover="this.style.background='var(--color-background-secondary)'" onmouseout="this.style.background=''"><div style="flex:1"><div style="font-weight:500;color:var(--color-text-primary)">${po.number}</div><div style="font-size:11px;color:var(--color-text-secondary)">${po.vendor} \u00b7 ${po.total} items \u00b7 ${po.received} received</div><div style="font-size:10px;color:var(--color-text-tertiary);margin-top:1px">COC required on ${po.lines.filter(l=>l.coc_req).length} lines</div></div><span class="badge ${po.status==='in_progress'?'b-am':po.status==='ready_to_review'?'b-bl':'b-gy'}">${po.status.replace(/_/g,' ')}</span></div>`).join('');}
-function rPOSelect(){const avail=SH.pos.filter(p=>p.status!=='complete');return`<div class="card"><div class="st">Select delivery to receive</div><div class="field"><label>Search PO, vendor, or part number</label><input id="po-s" type="text" placeholder="e.g. PO-2026, Parker, HAM-FLT..." oninput="filterPOs(this.value)"></div><div id="po-res">${rPOList(avail)}</div>${L.pausedSess.length?`<div style="margin-top:12px"><div style="font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:6px">Paused sessions</div>${L.pausedSess.map(ps=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:8px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);margin-bottom:4px"><span style="font-size:12px;color:var(--color-text-primary)">${ps.poNum} \u00b7 ${ps.left} items remaining</span><button class="btn btn-sm" onclick="resumeSess('${ps.id}')">Resume \u2192</button></div>`).join('')}</div>`:''}</div>`;}
-function filterPOs(q){const avail=SH.pos.filter(p=>p.status!=='complete');const f=avail.filter(p=>!q||p.number.toLowerCase().includes(q.toLowerCase())||p.vendor.toLowerCase().includes(q.toLowerCase()));const el=document.getElementById('po-res');if(el)el.innerHTML=rPOList(f);}
-function rPrefetch(){const po=L.activePO;const stages=['Fetching PO lines from ERP','Loading expected serial numbers','Applying vendor label profile','Checking COC requirements','Pre-filling quantities from PO'];return`<div class="card" style="max-width:500px"><div style="font-weight:500;font-size:13px;color:var(--color-text-primary);margin-bottom:3px">Pre-fetching PO data</div><div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:12px">${po.number} \u2014 ${po.vendor}</div>${stages.map((s,i)=>`<div class="pstp"><div class="sic ${i<L.pfStage?'sic-done':i===L.pfStage?'sic-act':'sic-pnd'}">${i<L.pfStage?'\u2713':i+1}</div><div><div style="font-size:12px;font-weight:500;color:var(--color-text-primary)">${s}</div><div style="font-size:10px;color:var(--color-text-secondary)">${i<L.pfStage?'complete':i===L.pfStage?'loading\u2026':'waiting'}</div></div></div>`).join('')}${L.pfStage>=5?`<div style="padding:10px;background:#EAF3DE;border-radius:var(--border-radius-md);margin-top:10px"><div style="font-weight:500;color:#27500A;font-size:12px;margin-bottom:3px">\u2713 Pre-fetch complete</div><div style="font-size:11px;color:#3B6D11">${po.lines.length} lines \u00b7 ${po.lines.filter(l=>l.coc_req).length} COC required \u00b7 Quantities pre-filled</div></div><button class="btn btn-p" style="margin-top:12px" onclick="L.scanSubView='scanning';render()">Start scanning \u2192</button>`:''}</div>`;}
-
-function rScanMain(){
-  const lines=L.sessLines;const rcv=lines.filter(l=>l.status==='received'||l.status==='qa_hold');const pct=lines.length?Math.round(rcv.length/lines.length*100):0;const cocMiss=lines.filter(l=>l.coc_req&&!l.coc_ok&&(l.status==='received'||l.status==='qa_hold'));
-  return`<div class="g2" style="align-items:start"><div>
-  <div class="scan-box"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><span style="font-size:10px;color:#9ca3af">${L.btConnected?`BT: ${L.btId}`:'Camera \u00b7 Scandit SDK'}</span><button class="btn btn-sm" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.25);color:#d1d5db;font-size:10px" onclick="L.showBT=true;render()">&#128225; ${L.btConnected?'Re-pair':'Pair BT'}</button></div><div class="reticle"><div class="rc tl"></div><div class="rc tr"></div><div class="rc bl"></div><div class="rc br"></div><div class="scl"></div>${L.scanLine?`<div class="slbl">${L.scanLine.pn}</div>`:''}</div><div class="ssts"><div style="display:flex;justify-content:space-between;font-size:11px;color:#d1d5db"><span>Confidence</span><span style="color:${L.lastConf>.85?'#4ade80':L.lastConf>.5?'#fbbf24':'#f87171'}">${Math.round(L.lastConf*100)}%</span></div><div class="cfbar"><div class="cff" style="width:${Math.round(L.lastConf*100)}%;background:${L.lastConf>.85?'#22c55e':L.lastConf>.5?'#f59e0b':'#ef4444'}"></div></div><div style="font-size:9px;color:#9ca3af;margin-top:3px">AI threshold: ${L.config.scanner.aiThresh*100}%</div></div></div>
-  <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px;margin-top:0;border:0.5px solid var(--color-border-tertiary)"><div style="font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:6px">&#9000; Manual barcode entry (use when scanner fails)</div><div style="display:flex;gap:6px"><input id="mbc" type="text" placeholder="Enter part number or serial number" value="${L.manualBC}" oninput="L.manualBC=this.value" onkeydown="if(event.key==='Enter')submitManual()"><button class="btn btn-p btn-sm" style="white-space:nowrap" onclick="submitManual()">Submit</button></div></div>
-  <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap"><button class="btn btn-p btn-sm" onclick="toggleScan()">${L.scanning?'\u23f9 Stop':'\u25b6 Auto-scan'}</button><button class="btn btn-sm" onclick="L.showDmg=true;render()">\u26a0 Damage</button><button class="btn btn-sm" onclick="pauseSess()">\u23f8 Pause</button>${CAN_OVERRIDE.includes(L.user?.role)?`<button class="btn btn-sm" style="border-color:#854F0B;color:#633806" onclick="L.overrideLine=null;L.showOverride=true;render()">\uD83D\uDD11 Override</button>`:''}${rcv.length===lines.length?`<button class="btn btn-s btn-sm" onclick="L.scanSubView='review';render()">\u2713 Review &amp; Finalize</button>`:''}</div>
-  ${cocMiss.length?`<div style="margin-top:10px;padding:9px;background:#FAEEDA;border-radius:var(--border-radius-md)"><div style="font-size:11px;font-weight:500;color:#633806;margin-bottom:4px">\u26a0 COC required on ${cocMiss.length} received item${cocMiss.length>1?'s':''}</div>${cocMiss.slice(0,3).map(l=>`<div style="font-size:11px;color:#633806">\u00b7 ${l.pn} \u2014 <span style="cursor:pointer;text-decoration:underline" onclick="L.cocTargetLine='${l.id}';nav('coc')">Upload COC \u2192</span></div>`).join('')}</div>`:''}
-  ${L.scanLog.length?`<div class="card" style="margin-top:10px"><div class="st">Recent scans</div>${L.scanLog.slice(0,5).map(s=>`<div style="display:flex;gap:7px;padding:4px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:11px;align-items:center"><span style="color:${s.ok?'#27500A':'#791F1F'};font-weight:500">${s.ok?'\u2713':'\u2717'}</span><span style="font-weight:500;color:var(--color-text-primary)">${s.pn}</span><span style="color:var(--color-text-tertiary)">${s.method}</span><span style="color:var(--color-text-tertiary);margin-left:auto">${s.latency}ms</span>${s.ai?`<span class="badge b-bl" style="font-size:9px">AI</span>`:''}${s.qa?`<span class="badge b-am" style="font-size:9px">QA</span>`:''}</div>`).join('')}</div>`:''}
-  </div>
-  <div class="card" style="overflow-y:auto;max-height:560px"><div class="st">PO lines \u2014 ${L.activePO?.number} <span class="badge b-bl">${pct}%</span></div><div class="pb" style="margin-bottom:10px"><div class="pbf" style="width:${pct}%"></div></div>${lines.map(l=>{const scanning=l.id===L.scanLine?.id;const cls=l.status==='received'?'rcv':l.status==='qa_hold'?'qah':scanning?'scg':'pnd';const ci=l.status==='received'?'ci-ok':l.status==='qa_hold'?'ci-qa':scanning?'ci-sc':'ci-pd';return`<div class="ir ${cls}"><div class="ci ${ci}">${l.status==='received'?'\u2713':l.status==='qa_hold'?'Q':scanning?'\u25ce':'\u25cb'}</div><div style="flex:1;min-width:0"><div style="font-weight:500;font-size:11px;color:var(--color-text-primary)">${l.pn}</div><div style="font-size:10px;color:var(--color-text-secondary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${l.desc}</div><div style="display:flex;gap:4px;margin-top:2px;flex-wrap:wrap">${l.coc_req?`<span class="${l.coc_ok?'coc-ok':'coc-rq'}">COC ${l.coc_ok?'\u2713':'required'}</span>`:`<span class="coc-no">COC N/A</span>`}${l.qa?`<span class="badge b-am" style="font-size:9px">\u26d1 QA</span>`:''}${l.sn?`<span style="font-size:10px;color:var(--color-text-tertiary)">SN: ${l.sn}</span>`:''}</div></div><div style="text-align:right;flex-shrink:0"><div style="font-size:11px;color:var(--color-text-primary)">${l.rcvd}/${l.qty}</div><span class="badge ${l.status==='received'?'b-gr':l.status==='qa_hold'?'b-am':'b-gy'}" style="font-size:9px">${l.status==='received'?'done':l.status==='qa_hold'?'QA hold':'pending'}</span>${(l.status==='received'||l.status==='qa_hold')&&CAN_OVERRIDE.includes(L.user?.role)?`<div style="margin-top:2px"><button class="btn btn-sm" style="font-size:10px;padding:2px 7px;color:#633806;border-color:#FAC775" onclick="L.overrideLine='${l.id}';L.showOverride=true;render()">Override</button></div>`:''}</div></div>`;}).join('')}</div></div>`;
+function pTitle(){
+  const role=L.user?.role;
+  if(L.view==='dashboard')return role==='qa_inspector'?'QA Inspection Queue':'Dashboard';
+  return{scan:L.activePO?`Receiving — ${L.activePO.number}`:'Start Session',coc:'COC Upload',analytics:'Analytics & Metrics',audit:'Audit Log',config:'Configuration'}[L.view]||'QuickReceive';
 }
 
-function rReview(){const po=L.activePO;const lines=L.sessLines;const rcv=lines.filter(l=>l.status==='received'||l.status==='qa_hold');const qaF=lines.filter(l=>l.qa);const cocMiss=lines.filter(l=>l.coc_req&&!l.coc_ok);const canFin=cocMiss.length===0;return`<div><div class="card"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px"><div><div style="font-size:14px;font-weight:500;color:var(--color-text-primary)">Review Delivery \u2014 ${po.number}</div><div style="font-size:11px;color:var(--color-text-secondary)">${po.vendor} \u00b7 ${rcv.length} of ${lines.length} items received</div></div><span class="badge b-bl">Ready to finalize</span></div><div class="g3" style="margin-bottom:14px"><div class="mc"><div class="mc-l">Items received</div><div class="mc-v" style="color:#27500A">${rcv.length}/${lines.length}</div></div><div class="mc"><div class="mc-l">QA flags</div><div class="mc-v" style="color:${qaF.length?'#633806':'#27500A'}">${qaF.length}</div></div><div class="mc"><div class="mc-l">COC status</div><div class="mc-v" style="color:${cocMiss.length?'#791F1F':'#27500A'}">${cocMiss.length?`${cocMiss.length} missing`:'All done'}</div></div></div>${cocMiss.length?`<div style="padding:10px;background:#FCEBEB;border-radius:var(--border-radius-md);margin-bottom:12px;border:0.5px solid #F09595"><div style="font-weight:500;color:#791F1F;margin-bottom:5px;font-size:12px">\u26a0 Finalization blocked \u2014 COC missing on ${cocMiss.length} required line${cocMiss.length>1?'s':''}</div>${cocMiss.map(l=>`<div style="font-size:11px;color:#791F1F;margin-bottom:3px">\u00b7 ${l.pn} \u2014 <span style="cursor:pointer;text-decoration:underline" onclick="L.cocTargetLine='${l.id}';nav('coc')">Upload COC \u2192</span></div>`).join('')}</div>`:''}<table><thead><tr><th>P/N</th><th>Description</th><th>Qty</th><th>COC</th><th>QA</th><th>Status</th></tr></thead><tbody>${lines.map(l=>`<tr><td style="font-weight:500">${l.pn}</td><td style="color:var(--color-text-secondary)">${l.desc}</td><td>${l.rcvd}/${l.qty}</td><td>${l.coc_req?(l.coc_ok?`<span class="coc-ok">\u2713</span>`:`<span class="coc-ms">Missing</span>`):`<span class="coc-no">N/A</span>`}</td><td>${l.qa?`<span class="badge b-am" style="font-size:10px">\u26d1 ${l.qa_r||'Flagged'}</span>`:`<span style="color:var(--color-text-tertiary);font-size:11px">None</span>`}</td><td><span class="badge ${l.status==='received'?'b-gr':l.status==='qa_hold'?'b-am':'b-gy'}">${l.status.replace('_',' ')}</span></td></tr>`).join('')}</tbody></table><div style="margin-top:14px;display:flex;gap:8px;align-items:center;flex-wrap:wrap"><button class="btn btn-s" onclick="${canFin?'finalizeDelivery()':''}" style="${canFin?'':'opacity:.4;cursor:not-allowed'}" ${canFin?'':'disabled'}>\u2713 Finalize &amp; Close PO</button><button class="btn btn-sm" onclick="nav('coc')">Upload COC</button><button class="btn btn-sm" onclick="L.scanSubView='scanning';render()">\u2190 Back to scan</button>${!canFin?`<span style="font-size:11px;color:#791F1F">Upload missing COC documents to enable finalization</span>`:''}</div></div></div>`;}
+function rView(){
+  if(L.view==='dashboard')return L.user?.role==='qa_inspector'?rQADash():rDash();
+  return({scan:rScan,coc:rCOC,analytics:rAnalytics,audit:rAudit,config:rConfig}[L.view]||rDash)();
+}
 
-function rQAModal(){const l=L.qaLine;if(!l)return'';return`<div class="modal-ov"><div class="modal"><div class="modal-t">QA Inspection Flag \u2014 ${l.pn}</div><div class="modal-s">${l.desc} \u00b7 just scanned and committed to ERP</div><div style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:10px">Flag this item for QA inspection?</div><div style="display:flex;gap:8px;margin-bottom:14px"><button class="btn" style="flex:1;padding:10px;border-color:#A32D2D" onclick="setQA(true)">\u26d1 Yes \u2014 flag for QA</button><button class="btn" style="flex:1;padding:10px" onclick="setQA(false)">\u2713 No \u2014 clear to stock</button></div><div id="qa-r-wrap" style="display:none"><div class="field"><label>QA flag reason</label><select id="qa-rs" onchange="L.qaReasonInput=this.value"><option value="">&#8212; select reason &#8212;</option><option>First Article Inspection required</option><option>Surface finish anomaly observed</option><option>Dimensional variance \u2014 measurement required</option><option>Shelf-life check required</option><option>COC discrepancy \u2014 hold for review</option><option>Packaging damage observed</option><option>Other \u2014 see notes below</option></select></div><div class="field"><label>Additional notes (optional)</label><input type="text" id="qa-note" placeholder="Describe the observation..." oninput="L.qaReasonInput=this.value"></div><button class="btn btn-w btn-sm" onclick="confirmQA()">Confirm QA flag</button></div></div></div>`;}
+function rSB(){
+  const u=L.user,role=u.role;
+  const navs=[
+    {v:'dashboard',i:'▦',l:role==='qa_inspector'?'QA Queue':'Dashboard',s:true},
+    {v:'scan',i:'⊙',l:'Receive',s:CAN_RECEIVE.includes(role)},
+    {v:'coc',i:'⊞',l:'COC Upload',s:CAN_RECEIVE.includes(role)},
+    {v:'analytics',i:'◈',l:'Analytics',s:CAN_ANALYTICS.includes(role)},
+    {v:'audit',i:'≡',l:'Audit Log',s:true},
+    {v:'config',i:'⚙',l:'Config',s:CAN_CONFIG.includes(role)},
+  ].filter(n=>n.s);
+  return`<div class="sb">
+    <div class="sb-logo"><div class="sb-t">QuickReceive</div><div class="sb-s">Joby Aviation · ${u.dock}</div></div>
+    ${navs.map(n=>`<div class="nav ${L.view===n.v?'on':''}" onclick="nav('${n.v}')">${n.i} ${n.l}</div>`).join('')}
+    ${L.pausedSess.length?`<div style="margin:8px;padding:8px;background:#FAEEDA;border-radius:var(--border-radius-md);font-size:11px"><span style="color:#633806;font-weight:500">⏸ ${L.pausedSess.length} paused</span><br><span style="color:#633806;cursor:pointer;text-decoration:underline" onclick="resumeLatest()">Resume →</span></div>`:''}
+    <div class="sb-foot">
+      <div class="sb-user">
+        <div style="font-size:11px;font-weight:500;color:var(--color-text-primary)">${u.name}</div>
+        <div style="font-size:10px;color:var(--color-text-tertiary)">${u.email}</div>
+        <span class="badge ${RCOL[u.role]}" style="margin-top:4px">${RLBL[u.role]}</span>
+        ${CAN_CONFIG.includes(u.role)?`<div style="margin-top:8px"><button class="btn btn-d btn-sm" style="width:100%" onclick="factoryReset()">⟳ Factory reset</button></div>`:''}
+      </div>
+      <div class="nav" onclick="logout()">⏏ Sign out</div>
+    </div>
+  </div>`;
+}
 
-function rOverrideModal(){const line=L.overrideLine?L.sessLines.find(l=>l.id===L.overrideLine):null;const supUsers=USERS.filter(u=>CAN_OVERRIDE.includes(u.role));return`<div class="modal-ov"><div class="modal"><div class="modal-t">\uD83D\uDD11 Supervisor Override</div><div class="modal-s" style="color:#791F1F">Re-authentication required. Creates an immutable audit record.</div>${line?`<div style="padding:8px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);margin-bottom:12px;font-size:12px;color:var(--color-text-primary)">Overriding: <strong>${line.pn}</strong> \u2014 ${line.desc}</div>`:`<div style="padding:8px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);margin-bottom:12px;font-size:12px;color:var(--color-text-secondary)">General session override</div>`}<div class="field"><label>Supervisor account</label><select id="ov-u"><option value="">&#8212; select supervisor &#8212;</option>${supUsers.map(u=>`<option value="${u.id}">${u.name} (${RLBL[u.role]})</option>`).join('')}</select></div><div class="field"><label>Supervisor credentials</label><input id="ov-p" type="password" placeholder="Enter password to re-authenticate"></div>${line?`<div class="field"><label>Field to correct</label><select id="ov-f" onchange="document.getElementById('ov-val-w').style.display='block'"><option value="">&#8212; select field &#8212;</option><option value="qty">Quantity received</option><option value="sn">Serial number</option><option value="status">Item status</option><option value="qa">QA flag</option></select></div><div id="ov-val-w" style="display:none"><div class="field"><label>Corrected value</label><input id="ov-v" type="text" placeholder="Enter corrected value"></div></div>`:''}<div class="field"><label>Override reason (required)</label>${['Damaged label \u2014 identity confirmed visually','Data entry correction','Serial number transposition \u2014 physical verification done','Emergency production requirement \u2014 documented separately','QA hold cleared \u2014 inspection complete'].map(r=>`<div class="ov-rc ${r===L._ovReason?'sel':''}" onclick="L._ovReason='${r}';this.parentNode.querySelectorAll('.ov-rc').forEach(el=>el.classList.remove('sel'));this.classList.add('sel')">${r}</div>`).join('')}</div><div style="display:flex;gap:8px;margin-top:4px"><button class="btn btn-w btn-sm" onclick="submitOverride()">Submit override</button><button class="btn btn-sm" onclick="L.showOverride=false;L.overrideLine=null;L._ovReason='';render()">Cancel</button></div></div></div>`;}
+function rLogin(){
+  return`<div class="lwrap"><div class="lcard">
+    <div style="font-size:20px;font-weight:500;margin-bottom:2px;color:var(--color-text-primary)">Joby QuickReceive</div>
+    <div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:18px">Inventory receiving · Joby Aviation 2026</div>
+    ${L.loginStep==='user'?`
+      <div class="field"><label>Select user account</label>
+        <select id="sel-u"><option value="">— select account —</option>
+          ${USERS.map(u=>`<option value="${u.id}">${u.name} (${RLBL[u.role]})</option>`).join('')}
+        </select>
+      </div>
+      <button class="btn btn-p" style="width:100%;padding:9px" onclick="doOkta()">Continue with Okta SSO →</button>
+      <div style="margin-top:10px;font-size:9px;color:var(--color-text-tertiary);text-align:center">SAML 2.0 · MFA enforced · JWT RS256</div>
+    `:`
+      <div style="text-align:center;margin-bottom:14px">
+        <div style="width:44px;height:44px;border-radius:50%;background:#E6F1FB;display:flex;align-items:center;justify-content:center;font-weight:500;color:#0C447C;font-size:14px;margin:0 auto 6px">${L.selUser?.ini}</div>
+        <div style="font-size:13px;font-weight:500;color:var(--color-text-primary)">${L.selUser?.name}</div>
+        <div style="font-size:11px;color:var(--color-text-secondary)">${L.selUser?.email}</div>
+      </div>
+      <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:11px;margin-bottom:12px">
+        <div style="font-size:10px;font-weight:500;color:var(--color-text-primary);margin-bottom:5px">Okta Verify — TOTP MFA</div>
+        <input id="mfa-in" type="text" placeholder="Enter 6-digit code" maxlength="6" style="text-align:center;font-size:17px;letter-spacing:.3em" onkeydown="if(event.key==='Enter')doMFA()">
+        <div style="font-size:9px;color:var(--color-text-tertiary);margin-top:4px">Any 6 digits for this demo</div>
+      </div>
+      <button class="btn btn-p" style="width:100%" onclick="doMFA()">Verify & Sign In</button>
+      <button class="btn" style="width:100%;margin-top:6px" onclick="L.loginStep='user';render()">← Back</button>
+    `}
+  </div></div>`;
+}
 
-function rBTModal(){return`<div class="modal-ov" onclick="if(event.target.classList.contains('modal-ov')){L.showBT=false;render()}"><div class="modal"><div class="modal-t">&#128225; Bluetooth Scanner Pairing</div><div class="modal-s">Pick up any MDM-enrolled Zebra RS5100 or TC57x and scan the QR code. Session-bound \u2014 not device-bound.</div><div style="text-align:center;margin:14px 0;padding:14px;background:#fff;border-radius:var(--border-radius-md);border:0.5px solid #e5e7eb"><div style="display:inline-grid;grid-template-columns:repeat(10,9px);gap:1px;padding:8px;background:#fff;border:2px solid #e5e7eb;border-radius:4px">${[1,1,1,1,1,1,1,0,1,0,1,0,0,0,1,0,1,0,0,0,1,0,1,1,1,0,1,0,1,1,1,0,1,0,0,0,1,0,1,0,0,0,0,0,1,0,1,0,0,0,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0].map(b=>`<div style="width:9px;height:9px;background:${b?'#000':'#fff'}"></div>`).join('')}</div></div><div style="font-size:10px;color:var(--color-text-tertiary);text-align:center;margin-bottom:12px">Token rotates every 60s \u00b7 Pick scanner \u00b7 Scan QR \u00b7 Linked in &lt;3s</div>${L.btConnected?`<div style="padding:8px;background:#EAF3DE;border-radius:var(--border-radius-md);font-size:12px;color:#27500A;margin-bottom:10px">\u2713 ${L.btId} connected \u00b7 Battery 84% \u00b7 Signal strong</div>`:''}<div style="display:flex;gap:8px"><button class="btn btn-p btn-sm" onclick="simBTPair()">Simulate pairing</button><button class="btn btn-sm" onclick="L.showBT=false;render()">Close</button></div></div></div>`;}
+// ─── STANDARD DASHBOARD (Receiver / Senior Receiver / Admin / WH Manager) ──
+function rDash(){
+  const pos=SH.pos;
+  const inP=pos.filter(p=>p.status==='in_progress').length;
+  const rtr=pos.filter(p=>p.status==='ready_to_review').length;
+  const done=pos.filter(p=>p.status==='complete').length;
+  const canSeeCsat=CAN_CSAT.includes(L.user?.role);
+  const avgC=SH.csat.length?+(SH.csat.reduce((a,c)=>a+c.score,0)/SH.csat.length).toFixed(1):0;
+  return`
+    <div class="g4" style="margin-bottom:14px">
+      <div class="mc"><div class="mc-l">In progress</div><div class="mc-v" style="color:#633806">${inP}</div></div>
+      <div class="mc"><div class="mc-l">Ready to review</div><div class="mc-v" style="color:#185FA5">${rtr}</div>${rtr?`<div class="mc-s" style="color:#791F1F">⚑ Action required</div>`:''}</div>
+      <div class="mc"><div class="mc-l">Completed today</div><div class="mc-v" style="color:#27500A">${done}</div></div>
+      ${canSeeCsat?`<div class="mc"><div class="mc-l">CSAT avg (${SH.csat.length} responses)</div><div class="mc-v">${avgC}/5</div></div>`:`<div class="mc"><div class="mc-l">QA holds</div><div class="mc-v" style="color:#633806">${pos.reduce((a,p)=>a+p.lines.filter(l=>l.qa).length,0)}</div></div>`}
+    </div>
+    <div class="card">
+      <div class="st">Purchase orders
+        ${CAN_RECEIVE.includes(L.user?.role)?`<button class="btn btn-p btn-sm" onclick="nav('scan')">+ New session</button>`:''}
+      </div>
+      <table>
+        <thead><tr><th>PO Number</th><th>Vendor</th><th>Progress</th><th>COC</th><th>Status</th><th>Action</th></tr></thead>
+        <tbody>${SH.pos.map(po=>{
+          const need=po.lines.filter(l=>l.coc_req).length;
+          const got=po.lines.filter(l=>l.coc_req&&l.coc_ok).length;
+          return`<tr>
+            <td style="font-weight:500">${po.number}</td>
+            <td style="color:var(--color-text-secondary)">${po.vendor}</td>
+            <td style="min-width:120px"><div style="display:flex;align-items:center;gap:6px"><div class="pb" style="flex:1"><div class="pbf" style="width:${Math.round(po.received/po.total*100)}%"></div></div><span style="font-size:11px;color:var(--color-text-secondary)">${po.received}/${po.total}</span></div></td>
+            <td><span style="font-size:11px;color:${got<need&&po.status!=='not_started'?'#791F1F':'var(--color-text-secondary)'}">${got}/${need}</span></td>
+            <td><span class="badge ${po.status==='complete'?'b-gr':po.status==='ready_to_review'?'b-bl':po.status==='in_progress'?'b-am':'b-gy'}">${po.status.replace(/_/g,' ')}</span></td>
+            <td>
+              ${CAN_RECEIVE.includes(L.user?.role)&&(po.status==='not_started'||po.status==='in_progress')?`<button class="btn btn-sm" onclick="openPO('${po.id}')">Open →</button>`:''}
+              ${po.status==='ready_to_review'&&(CAN_RECEIVE.includes(L.user?.role)||L.user?.role==='warehouse_manager')?`<button class="btn btn-p btn-sm" onclick="openReview('${po.id}')">Review →</button>`:''}
+              ${po.status==='complete'?`<span style="font-size:11px;color:#27500A">✓ Complete</span>`:''}
+            </td>
+          </tr>`;
+        }).join('')}</tbody>
+      </table>
+    </div>
+    ${SH.notifs.length?`<div class="card"><div class="st">Recent notifications</div>${SH.notifs.slice(0,5).map(n=>`<div style="display:flex;gap:8px;padding:5px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:11px"><span>${n.icon}</span><span style="color:var(--color-text-tertiary);flex-shrink:0">${n.time}</span><span style="color:var(--color-text-secondary)">${n.text}</span></div>`).join('')}</div>`:''}
+  `;
+}
 
-function rDmgModal(){const pend=L.sessLines.filter(l=>l.status==='pending');return`<div class="modal-ov"><div class="modal"><div class="modal-t">\u26a0 Flag Item Damage</div><div class="modal-s">QA, Warehouse Manager, and AP will be notified immediately.</div><div class="field"><label>Affected item</label><select id="dmg-l">${pend.length?pend.map(l=>`<option value="${l.id}">${l.pn} \u2014 ${l.desc}</option>`).join(''):'<option>No pending items</option>'}</select></div><div class="field"><label>Damage type</label><div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px">${['Packaging damage','Item damage','Missing components','Tamper evidence'].map(t=>`<button class="dmg-btn ${L.dmgType===t?'sel':''}" onclick="L.dmgType='${t}';render()">${t}</button>`).join('')}</div></div><div class="field"><label>Notes (optional)</label><textarea id="dmg-n" rows="2" placeholder="Describe damage observed...">${L.dmgNote}</textarea></div><div style="display:flex;gap:8px"><button class="btn btn-d btn-sm" onclick="submitDmg()">Submit damage flag</button><button class="btn btn-sm" onclick="L.showDmg=false;render()">Cancel</button></div><div style="margin-top:9px;padding:8px;background:#FAEEDA;border-radius:var(--border-radius-md);font-size:10px;color:#633806">On submit: QA priority queue \u00b7 WH Manager alert \u00b7 AP invoice hold \u00b7 Vendor damage record</div></div></div>`;}
+// ─── QA INSPECTOR DASHBOARD ───────────────────────────────────
+function rQADash(){
+  // Collect all QA-flagged items across all POs
+  const qaItems=[];
+  SH.pos.forEach(po=>{
+    po.lines.filter(l=>l.qa).forEach(l=>{
+      qaItems.push({...l,poNumber:po.number,poId:po.id,vendor:po.vendor,poStatus:po.status});
+    });
+  });
+  const open=qaItems.filter(i=>i.status==='qa_hold');
+  const resolved=qaItems.filter(i=>i.status==='received');
+  return`
+    <div class="g3" style="margin-bottom:14px">
+      <div class="mc"><div class="mc-l">Open QA holds</div><div class="mc-v" style="color:#633806">${open.length}</div><div class="mc-s" style="color:#633806">Awaiting inspection</div></div>
+      <div class="mc"><div class="mc-l">Resolved holds</div><div class="mc-v" style="color:#27500A">${resolved.length}</div></div>
+      <div class="mc"><div class="mc-l">POs affected</div><div class="mc-v">${new Set(qaItems.map(i=>i.poId)).size}</div></div>
+    </div>
+    <div class="card">
+      <div class="st">Open QA holds — items awaiting inspection</div>
+      ${open.length===0?`<div style="text-align:center;padding:24px;color:var(--color-text-tertiary);font-size:12px">No items currently on QA hold</div>`:
+      open.map(item=>`
+        <div class="qa-item-card">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px">
+            <div>
+              <div style="font-weight:500;font-size:13px;color:var(--color-text-primary)">${item.pn}</div>
+              <div style="font-size:11px;color:var(--color-text-secondary)">${item.desc}</div>
+            </div>
+            <span class="badge b-am">QA Hold</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:11px;margin-bottom:8px">
+            <div><span style="color:var(--color-text-tertiary)">PO: </span><span style="color:var(--color-text-primary);font-weight:500">${item.poNumber}</span></div>
+            <div><span style="color:var(--color-text-tertiary)">Vendor: </span><span style="color:var(--color-text-primary)">${item.vendor}</span></div>
+            ${item.sn?`<div><span style="color:var(--color-text-tertiary)">SN: </span><span style="color:var(--color-text-primary)">${item.sn}</span></div>`:''}
+            <div><span style="color:var(--color-text-tertiary)">Qty on hold: </span><span style="color:var(--color-text-primary)">${item.rcvd}/${item.qty}</span></div>
+          </div>
+          <div style="background:#fff;border-radius:var(--border-radius-md);padding:8px;margin-bottom:8px;border:0.5px solid #FAC775">
+            <div style="font-size:10px;color:var(--color-text-tertiary);margin-bottom:2px">Flag reason</div>
+            <div style="font-size:12px;color:#633806;font-weight:500">${item.qa_r}</div>
+          </div>
+          <div style="display:flex;gap:7px">
+            <button class="btn btn-s btn-sm" onclick="qaRelease('${item.id}','${item.poId}')">✓ Release to stock</button>
+            <button class="btn btn-d btn-sm" onclick="qaReject('${item.id}','${item.poId}')">✗ Reject — return to vendor</button>
+          </div>
+        </div>`).join('')}
+    </div>
+    ${resolved.length?`<div class="card">
+      <div class="st">Resolved holds</div>
+      <table><thead><tr><th>P/N</th><th>Description</th><th>PO</th><th>Flag reason</th><th>Resolved status</th></tr></thead>
+      <tbody>${resolved.map(item=>`<tr>
+        <td style="font-weight:500">${item.pn}</td>
+        <td style="color:var(--color-text-secondary)">${item.desc}</td>
+        <td>${item.poNumber}</td>
+        <td style="font-size:11px;color:var(--color-text-tertiary)">${item.qa_r}</td>
+        <td><span class="badge b-gr">Released</span></td>
+      </tr>`).join('')}</tbody></table>
+    </div>`:''}
+    <div style="padding:10px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);font-size:11px;color:var(--color-text-tertiary)">
+      QA Inspector role: view and action QA holds only · Scan/receive access is restricted to Receiver roles
+    </div>
+  `;
+}
 
-function rCSAT(){return`<div class="modal-ov"><div class="modal" style="text-align:center"><div style="font-size:16px;font-weight:500;color:var(--color-text-primary);margin-bottom:3px">How was your receive session?</div><div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:18px">${L.activePO?.number} \u00b7 Session complete</div><div style="display:flex;justify-content:center;gap:10px;margin-bottom:16px">${[['&#128542;',1,'Bad'],['&#128528;',2,'OK'],['&#128578;',3,'Good'],['&#128516;',4,'Great'],['&#129321;',5,'Perfect']].map(([e,s,lbl])=>`<div onclick="submitCsat(${s})" style="cursor:pointer;padding:10px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary)" onmouseover="this.style.background='var(--color-background-secondary)'" onmouseout="this.style.background=''"><div style="font-size:26px">${e}</div><div style="font-size:10px;color:var(--color-text-secondary);margin-top:3px">${lbl}</div></div>`).join('')}</div><button class="btn btn-sm" onclick="skipCsat()">Skip</button></div></div>`;}
+function rScan(){
+  if(!L.activePO&&L.scanSubView!=='select')L.scanSubView='select';
+  if(L.scanSubView==='select')return rPOSelect();
+  if(L.scanSubView==='prefetch')return rPrefetch();
+  if(L.scanSubView==='scanning')return rScanMain();
+  if(L.scanSubView==='review')return rReview();
+  return rPOSelect();
+}
 
-function rCOC(){return`<div class="card"><div class="st">COC Upload \u2014 Certificate of Conformance</div><div style="font-size:12px;color:var(--color-text-secondary);margin-bottom:14px">Auto-rotate \u2192 perspective correction \u2192 deskew \u2192 OCR extraction \u2192 auto-match to ERP line.</div>${L.activePO&&L.sessLines.length?`<div class="field"><label>Link to PO line (optional)</label><select id="coc-ls" onchange="L.cocTargetLine=this.value"><option value="">&#8212; auto-detect from extracted P/N &#8212;</option>${L.sessLines.filter(l=>l.coc_req).map(l=>`<option value="${l.id}" ${l.id===L.cocTargetLine?'selected':''}>${l.pn} \u2014 ${l.coc_ok?'\u2713 COC attached':'COC required'}</option>`).join('')}</select></div>`:''} ${!L.cocFile?`<div style="border:1.5px dashed var(--color-border-secondary);border-radius:var(--border-radius-lg);padding:36px;text-align:center;cursor:pointer" onclick="mockCOCUpload()"><div style="font-size:22px;margin-bottom:7px">&#8862;</div><div style="font-weight:500;font-size:13px;color:var(--color-text-primary)">Click to upload or photograph document</div><div style="font-size:11px;color:var(--color-text-tertiary);margin-top:4px">PDF, JPEG, PNG \u00b7 Max 20MB</div></div>`:`<div style="font-weight:500;font-size:12px;color:var(--color-text-primary);margin-bottom:10px">Processing: ${L.cocFile}</div>${['Edge detection &amp; document boundary','Perspective warp (4-point homography)','Deskew &amp; rotation (Hough transform)','Auto-crop + contrast enhancement','Google Document AI field extraction'].map((s,i)=>`<div class="pstp"><div class="sic ${i<L.cocStage?'sic-done':i===L.cocStage?'sic-act':'sic-pnd'}">${i<L.cocStage?'\u2713':i+1}</div><div><div style="font-size:12px;font-weight:500;color:var(--color-text-primary)">${s}</div><div style="font-size:10px;color:var(--color-text-secondary)">${i<L.cocStage?'complete':i===L.cocStage?'processing\u2026':'waiting'}</div></div></div>`).join('')}${L.cocResult?`<div style="padding:10px;background:${L.cocResult.matched?'#EAF3DE':'#FAEEDA'};border-radius:var(--border-radius-md);margin-top:10px;border:0.5px solid ${L.cocResult.matched?'#97C459':'#EF9F27'}"><div style="font-weight:500;color:${L.cocResult.matched?'#27500A':'#633806'};margin-bottom:3px;font-size:12px">${L.cocResult.matched?'\u2713 Auto-matched and attached to ERP line':'\u26a0 Manual review needed'}</div><div style="font-size:11px;color:${L.cocResult.matched?'#3B6D11':'#633806'}">Extracted P/N: ${L.cocResult.pn} \u00b7 Confidence: ${Math.round(L.cocResult.conf*100)}%</div></div><div style="display:flex;gap:7px;margin-top:10px"><button class="btn btn-sm" onclick="L.cocFile=null;L.cocResult=null;L.cocStage=0;render()">Upload another</button>${L.activePO?`<button class="btn btn-p btn-sm" onclick="L.scanSubView='review';nav('scan')">Back to review \u2192</button>`:''}</div>`:''}`}</div>`;}
+function rPOList(pos){
+  return pos.map(po=>`
+    <div style="display:flex;align-items:center;gap:10px;padding:10px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);margin-bottom:6px;cursor:pointer" onclick="openPO('${po.id}')" onmouseover="this.style.background='var(--color-background-secondary)'" onmouseout="this.style.background=''">
+      <div style="flex:1">
+        <div style="font-weight:500;color:var(--color-text-primary)">${po.number}</div>
+        <div style="font-size:11px;color:var(--color-text-secondary)">${po.vendor} · ${po.total} items · ${po.received} received</div>
+        <div style="font-size:10px;color:var(--color-text-tertiary);margin-top:1px">COC required on ${po.lines.filter(l=>l.coc_req).length} lines</div>
+      </div>
+      <span class="badge ${po.status==='in_progress'?'b-am':po.status==='ready_to_review'?'b-bl':'b-gy'}">${po.status.replace(/_/g,' ')}</span>
+    </div>`).join('');
+}
 
-function rAnalytics(){const cr=SH.csat,sh=SH.hist;const avg=cr.length?+(cr.reduce((a,c)=>a+c.score,0)/cr.length).toFixed(1):0;const npsR=cr.filter(c=>c.nps!==null);const nps=npsR.length?Math.round((npsR.filter(c=>c.nps>=9).length/npsR.length-npsR.filter(c=>c.nps<=6).length/npsR.length)*100):0;const compR=sh.length?+(sh.reduce((a,s)=>a+s.received/s.total,0)/sh.length*100).toFixed(0):0;const avgT=sh.length?+(sh.reduce((a,s)=>a+s.duration,0)/sh.length).toFixed(1):0;const dist=[1,2,3,4,5].map(s=>cr.filter(c=>c.score===s).length);const mx=Math.max(...dist,1);return`<div class="g4" style="margin-bottom:14px"><div class="mc"><div class="mc-l">Avg CSAT (${cr.length})</div><div class="mc-v" style="color:#185FA5">${avg}/5</div><div class="mc-s" style="color:var(--color-text-secondary)">Target \u22654.0</div></div><div class="mc"><div class="mc-l">NPS score</div><div class="mc-v" style="color:${nps>=30?'#27500A':'#633806'}">${nps>0?'+':''}${nps}</div><div class="mc-s" style="color:var(--color-text-secondary)">Target \u226530</div></div><div class="mc"><div class="mc-l">Completion rate</div><div class="mc-v" style="color:#27500A">${compR}%</div></div><div class="mc"><div class="mc-l">Avg receive time</div><div class="mc-v">${avgT} min</div></div></div><div class="g2"><div class="card"><div class="st">CSAT distribution</div>${[5,4,3,2,1].map(s=>`<div class="bar-r"><span style="font-size:14px;width:22px">${['\uD83D\uDE1E','\uD83D\uDE10','\uD83D\uDE42','\uD83D\uDE04','\uD83E\uDD29'][s-1]}</span><div class="bar-b"><div class="bar-f" style="width:${Math.round(dist[s-1]/mx*100)}%;background:${s>=4?'#639922':s===3?'#BA7517':'#E24B4A'}"></div></div><span style="font-size:11px;color:var(--color-text-secondary);width:50px;text-align:right">${dist[s-1]} (${cr.length?Math.round(dist[s-1]/cr.length*100):0}%)</span></div>`).join('')}</div><div class="card"><div class="st">Recent CSAT responses</div><table><thead><tr><th>Time</th><th>User</th><th>Score</th></tr></thead><tbody>${cr.slice(0,8).map(c=>`<tr><td style="color:var(--color-text-tertiary)">${c.time}</td><td>${c.user}</td><td>${['\uD83D\uDE1E','\uD83D\uDE10','\uD83D\uDE42','\uD83D\uDE04','\uD83E\uDD29'][c.score-1]} ${c.score}/5</td></tr>`).join('')}</tbody></table></div></div><div class="card" style="margin-top:0"><div class="st">Session history (${sh.length} sessions)</div><table><thead><tr><th>PO</th><th>Vendor</th><th>User</th><th>Items</th><th>Duration</th><th>Success</th></tr></thead><tbody>${sh.slice(0,10).map(s=>`<tr><td style="font-weight:500">${s.poNumber}</td><td style="color:var(--color-text-secondary)">${s.vendor}</td><td>${s.user}</td><td>${s.received}/${s.total}</td><td>${s.duration.toFixed(1)} min</td><td style="color:${s.scanSuccess>=.9?'#27500A':'#633806'}">${(s.scanSuccess*100).toFixed(0)}%</td></tr>`).join('')}</tbody></table></div>`;}
+function rPOSelect(){
+  const avail=SH.pos.filter(p=>p.status!=='complete');
+  return`<div class="card">
+    <div class="st">Select delivery to receive</div>
+    <div class="field"><label>Search PO, vendor, or part number</label>
+      <input id="po-s" type="text" placeholder="e.g. PO-2026, Parker, HAM-FLT..." oninput="filterPOs(this.value)">
+    </div>
+    <div id="po-res">${rPOList(avail)}</div>
+    ${L.pausedSess.length?`<div style="margin-top:12px">${L.pausedSess.map(ps=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:8px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);margin-bottom:4px"><span style="font-size:12px;color:var(--color-text-primary)">${ps.poNum} · ${ps.left} items remaining</span><button class="btn btn-sm" onclick="resumeSess('${ps.id}')">Resume →</button></div>`).join('')}</div>`:''}
+  </div>`;
+}
 
-function rAudit(){return`<div class="card"><div class="st">Immutable audit log <span class="badge b-gy">WORM \u00b7 7yr retention</span></div>${!SH.audit.length?`<div style="text-align:center;padding:28px;color:var(--color-text-tertiary);font-size:12px">No audit events yet \u2014 start a session to generate events</div>`:`<div style="max-height:520px;overflow-y:auto">${SH.audit.slice(0,100).map(a=>`<div style="display:flex;gap:9px;padding:6px 0;border-bottom:0.5px solid var(--color-border-tertiary)"><span style="font-size:11px;color:var(--color-text-tertiary);flex-shrink:0;width:68px">${a.time}</span><div><span style="font-size:11px;font-weight:500;color:var(--color-text-primary)">${a.ev}</span>${a.ai?' <span class="badge b-bl" style="font-size:9px">AI</span>':''}<div style="font-size:11px;color:var(--color-text-secondary)">${a.det}</div><div style="font-size:10px;color:var(--color-text-tertiary)">${a.user}</div></div></div>`).join('')}</div>`}</div>`;}
+function filterPOs(q){
+  const avail=SH.pos.filter(p=>p.status!=='complete');
+  const f=avail.filter(p=>!q||p.number.toLowerCase().includes(q.toLowerCase())||p.vendor.toLowerCase().includes(q.toLowerCase()));
+  const el=document.getElementById('po-res');if(el)el.innerHTML=rPOList(f);
+}
 
-function rConfig(){if(!CAN_CONFIG.includes(L.user?.role))return`<div class="card"><div style="color:#791F1F;font-size:13px">Access denied \u2014 Admin role required</div></div>`;const c=L.config;function cr(lbl,path,val,desc){return`<div style="display:flex;gap:12px;padding:9px 0;border-bottom:0.5px solid var(--color-border-tertiary);align-items:flex-start"><div style="flex:0 0 200px"><div style="font-size:12px;font-weight:500;color:var(--color-text-primary)">${lbl}</div><div style="font-size:10px;color:var(--color-text-tertiary);margin-top:2px">${desc}</div></div><input style="max-width:110px" type="number" step="any" value="${val}" onchange="updCfg('${path}',this.value)"></div>`;}return`<div><div class="card"><div style="font-size:12px;font-weight:500;color:#791F1F;margin-bottom:10px">\u26d1 Admin configuration panel</div><div style="font-size:10px;font-weight:500;color:var(--color-text-tertiary);margin-bottom:3px">ERP</div>${cr('Commit latency (ms)','erp.latencyMs',c.erp.latencyMs,'Simulated ERP round-trip.')}${cr('Failure rate (0\u20131)','erp.failRate',c.erp.failRate,'Simulated API error rate.')}<div style="font-size:10px;font-weight:500;color:var(--color-text-tertiary);margin:10px 0 3px">Scanner</div>${cr('Scan delay (ms)','scanner.delayMs',c.scanner.delayMs,'Delay between auto-scans.')}${cr('Success rate (0\u20131)','scanner.successRate',c.scanner.successRate,'Probability of clean decode.')}${cr('Partial decode rate (0\u20131)','scanner.partialRate',c.scanner.partialRate,'Triggers AI match flow.')}${cr('AI threshold (0\u20131)','scanner.aiThresh',c.scanner.aiThresh,'One-tap accept threshold.')}<div style="font-size:10px;font-weight:500;color:var(--color-text-tertiary);margin:10px 0 3px">OCR / COC</div>${cr('Pipeline time (ms)','ocr.procMs',c.ocr.procMs,'Simulated OCR processing.')}${cr('Auto-match threshold (0\u20131)','ocr.autoMatchThresh',c.ocr.autoMatchThresh,'Min confidence for auto-attach.')}</div><div class="card"><div style="font-size:12px;font-weight:500;color:var(--color-text-primary);margin-bottom:8px">User accounts \u2014 read-only</div><table><thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Dock</th></tr></thead><tbody>${USERS.map(u=>`<tr><td style="font-weight:500">${u.name}</td><td style="color:var(--color-text-tertiary)">${u.email}</td><td><span class="badge ${RCOL[u.role]}">${RLBL[u.role]}</span></td><td>${u.dock}</td></tr>`).join('')}</tbody></table></div></div>`;}
+function rPrefetch(){
+  const po=L.activePO;
+  const stages=['Fetching PO lines from ERP','Loading expected serial numbers','Applying vendor label profile','Checking COC requirements','Pre-filling quantities from PO'];
+  return`<div class="card" style="max-width:500px">
+    <div style="font-weight:500;font-size:13px;color:var(--color-text-primary);margin-bottom:3px">Pre-fetching PO data</div>
+    <div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:12px">${po.number} — ${po.vendor}</div>
+    ${stages.map((s,i)=>`<div class="pstp"><div class="sic ${i<L.pfStage?'sic-done':i===L.pfStage?'sic-act':'sic-pnd'}">${i<L.pfStage?'✓':i+1}</div><div><div style="font-size:12px;font-weight:500;color:var(--color-text-primary)">${s}</div><div style="font-size:10px;color:var(--color-text-secondary)">${i<L.pfStage?'complete':i===L.pfStage?'loading…':'waiting'}</div></div></div>`).join('')}
+    ${L.pfStage>=5?`<div style="padding:10px;background:#EAF3DE;border-radius:var(--border-radius-md);margin-top:10px"><div style="font-weight:500;color:#27500A;font-size:12px;margin-bottom:3px">✓ Pre-fetch complete</div><div style="font-size:11px;color:#3B6D11">${po.lines.length} lines · ${po.lines.filter(l=>l.coc_req).length} COC required</div></div><button class="btn btn-p" style="margin-top:12px" onclick="L.scanSubView='scanning';render()">Start scanning →</button>`:''}
+  </div>`;
+}
 
-// Actions
-function nav(v){if(L.scanning)stopScan();if(v==='config'&&!CAN_CONFIG.includes(L.user?.role)){toast('Config restricted to Admin role','e');return;}L.view=v;render();}
+function rScanMain(){
+  const lines=L.sessLines;
+  const rcv=lines.filter(l=>l.status==='received'||l.status==='qa_hold');
+  const pct=lines.length?Math.round(rcv.length/lines.length*100):0;
+  const cocMiss=lines.filter(l=>l.coc_req&&!l.coc_ok&&(l.status==='received'||l.status==='qa_hold'));
+  return`<div class="g2" style="align-items:start">
+    <div>
+      <div class="scan-box">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <span style="font-size:10px;color:#9ca3af">${L.btConnected?`BT: ${L.btId}`:'Camera · Scandit SDK'}</span>
+          <button class="btn btn-sm" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.25);color:#d1d5db;font-size:10px" onclick="L.showBT=true;render()">📡 ${L.btConnected?'Re-pair':'Pair BT'}</button>
+        </div>
+        <div class="reticle">
+          <div class="rc tl"></div><div class="rc tr"></div><div class="rc bl"></div><div class="rc br"></div>
+          <div class="scl"></div>
+          ${L.scanLine?`<div class="slbl">${L.scanLine.pn}</div>`:''}
+        </div>
+        <div class="ssts">
+          <div style="display:flex;justify-content:space-between;font-size:11px;color:#d1d5db"><span>Confidence</span><span style="color:${L.lastConf>.85?'#4ade80':L.lastConf>.5?'#fbbf24':'#f87171'}">${Math.round(L.lastConf*100)}%</span></div>
+          <div class="cfbar"><div class="cff" style="width:${Math.round(L.lastConf*100)}%;background:${L.lastConf>.85?'#22c55e':L.lastConf>.5?'#f59e0b':'#ef4444'}"></div></div>
+          <div style="font-size:9px;color:#9ca3af;margin-top:3px">AI threshold: ${L.config.scanner.aiThresh*100}%</div>
+        </div>
+      </div>
+      <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px;margin-top:0;border:0.5px solid var(--color-border-tertiary)">
+        <div style="font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:6px">⌨ Manual barcode entry</div>
+        <div style="display:flex;gap:6px">
+          <input id="mbc" type="text" placeholder="Enter part number or serial number" value="${L.manualBC}" oninput="L.manualBC=this.value" onkeydown="if(event.key==='Enter')submitManual()">
+          <button class="btn btn-p btn-sm" style="white-space:nowrap" onclick="submitManual()">Submit</button>
+        </div>
+      </div>
+      <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap">
+        <button class="btn btn-p btn-sm" onclick="toggleScan()">${L.scanning?'⏹ Stop':'▶ Auto-scan'}</button>
+        <button class="btn btn-sm" onclick="L.showDmg=true;render()">⚠ Damage</button>
+        <button class="btn btn-sm" onclick="pauseSess()">⏸ Pause</button>
+        ${CAN_OVERRIDE.includes(L.user?.role)?`<button class="btn btn-sm" style="border-color:#854F0B;color:#633806" onclick="L.overrideLine=null;L.showOverride=true;render()">🔑 Override</button>`:''}
+        ${rcv.length===lines.length?`<button class="btn btn-s btn-sm" onclick="L.scanSubView='review';render()">✓ Review & Finalize</button>`:''}
+      </div>
+      ${cocMiss.length?`<div style="margin-top:10px;padding:9px;background:#FAEEDA;border-radius:var(--border-radius-md)">
+        <div style="font-size:11px;font-weight:500;color:#633806;margin-bottom:4px">⚠ COC required on ${cocMiss.length} received item${cocMiss.length>1?'s':''}</div>
+        ${cocMiss.slice(0,3).map(l=>`<div style="font-size:11px;color:#633806">· ${l.pn} — <span style="cursor:pointer;text-decoration:underline" onclick="L.cocTargetLine='${l.id}';nav('coc')">Upload COC →</span></div>`).join('')}
+      </div>`:''}
+      ${L.scanLog.length?`<div class="card" style="margin-top:10px"><div class="st">Recent scans</div>${L.scanLog.slice(0,5).map(s=>`<div style="display:flex;gap:7px;padding:4px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:11px;align-items:center"><span style="color:${s.ok?'#27500A':'#791F1F'};font-weight:500">${s.ok?'✓':'✗'}</span><span style="font-weight:500;color:var(--color-text-primary)">${s.pn}</span><span style="color:var(--color-text-tertiary)">${s.method}</span><span style="color:var(--color-text-tertiary);margin-left:auto">${s.latency}ms</span>${s.ai?`<span class="badge b-bl" style="font-size:9px">AI</span>`:''}${s.qa?`<span class="badge b-am" style="font-size:9px">QA</span>`:''}</div>`).join('')}</div>`:''}
+    </div>
+    <div class="card" style="overflow-y:auto;max-height:560px">
+      <div class="st">PO lines — ${L.activePO?.number} <span class="badge b-bl">${pct}%</span></div>
+      <div class="pb" style="margin-bottom:10px"><div class="pbf" style="width:${pct}%"></div></div>
+      ${lines.map(l=>{
+        const scanning=l.id===L.scanLine?.id;
+        const cls=l.status==='received'?'rcv':l.status==='qa_hold'?'qah':scanning?'scg':'pnd';
+        const ci=l.status==='received'?'ci-ok':l.status==='qa_hold'?'ci-qa':scanning?'ci-sc':'ci-pd';
+        return`<div class="ir ${cls}">
+          <div class="ci ${ci}">${l.status==='received'?'✓':l.status==='qa_hold'?'Q':scanning?'◉':'○'}</div>
+          <div style="flex:1;min-width:0">
+            <div style="font-weight:500;font-size:11px;color:var(--color-text-primary)">${l.pn}</div>
+            <div style="font-size:10px;color:var(--color-text-secondary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${l.desc}</div>
+            <div style="display:flex;gap:4px;margin-top:2px;flex-wrap:wrap">
+              ${l.coc_req?`<span class="${l.coc_ok?'coc-ok':'coc-rq'}">COC ${l.coc_ok?'✓':'required'}</span>`:`<span class="coc-no">COC N/A</span>`}
+              ${l.qa?`<span class="badge b-am" style="font-size:9px">⚑ QA: ${l.qa_r}</span>`:''}
+              ${l.sn?`<span style="font-size:10px;color:var(--color-text-tertiary)">SN: ${l.sn}</span>`:''}
+            </div>
+          </div>
+          <div style="text-align:right;flex-shrink:0">
+            <div style="font-size:11px;color:var(--color-text-primary)">${l.rcvd}/${l.qty}</div>
+            <span class="badge ${l.status==='received'?'b-gr':l.status==='qa_hold'?'b-am':'b-gy'}" style="font-size:9px">${l.status==='received'?'done':l.status==='qa_hold'?'QA hold':'pending'}</span>
+            ${(l.status==='received'||l.status==='qa_hold')&&CAN_OVERRIDE.includes(L.user?.role)?`<div style="margin-top:2px"><button class="btn btn-sm" style="font-size:10px;padding:2px 7px;color:#633806;border-color:#FAC775" onclick="L.overrideLine='${l.id}';L.showOverride=true;render()">Override</button></div>`:''}
+          </div>
+        </div>`;
+      }).join('')}
+    </div>
+  </div>`;
+}
+
+function rReview(){
+  const po=L.activePO;const lines=L.sessLines;
+  const rcv=lines.filter(l=>l.status==='received'||l.status==='qa_hold');
+  const qaF=lines.filter(l=>l.qa);
+  const cocMiss=lines.filter(l=>l.coc_req&&!l.coc_ok);
+  const canFin=cocMiss.length===0;
+  return`<div><div class="card">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+      <div><div style="font-size:14px;font-weight:500;color:var(--color-text-primary)">Review Delivery — ${po.number}</div>
+      <div style="font-size:11px;color:var(--color-text-secondary)">${po.vendor} · ${rcv.length} of ${lines.length} items received</div></div>
+      <span class="badge b-bl">Ready to finalize</span>
+    </div>
+    <div class="g3" style="margin-bottom:14px">
+      <div class="mc"><div class="mc-l">Items received</div><div class="mc-v" style="color:#27500A">${rcv.length}/${lines.length}</div></div>
+      <div class="mc"><div class="mc-l">QA flags</div><div class="mc-v" style="color:${qaF.length?'#633806':'#27500A'}">${qaF.length}</div></div>
+      <div class="mc"><div class="mc-l">COC status</div><div class="mc-v" style="color:${cocMiss.length?'#791F1F':'#27500A'}">${cocMiss.length?`${cocMiss.length} missing`:'All done'}</div></div>
+    </div>
+    ${cocMiss.length?`<div style="padding:10px;background:#FCEBEB;border-radius:var(--border-radius-md);margin-bottom:12px;border:0.5px solid #F09595"><div style="font-weight:500;color:#791F1F;margin-bottom:5px;font-size:12px">⚠ Finalization blocked — COC missing on ${cocMiss.length} line${cocMiss.length>1?'s':''}</div>${cocMiss.map(l=>`<div style="font-size:11px;color:#791F1F;margin-bottom:3px">· ${l.pn} — <span style="cursor:pointer;text-decoration:underline" onclick="L.cocTargetLine='${l.id}';nav('coc')">Upload COC →</span></div>`).join('')}</div>`:''}
+    <table><thead><tr><th>P/N</th><th>Description</th><th>Qty</th><th>COC</th><th>QA</th><th>Status</th></tr></thead>
+    <tbody>${lines.map(l=>`<tr>
+      <td style="font-weight:500">${l.pn}</td><td style="color:var(--color-text-secondary)">${l.desc}</td><td>${l.rcvd}/${l.qty}</td>
+      <td>${l.coc_req?(l.coc_ok?`<span class="coc-ok">✓</span>`:`<span class="coc-ms">Missing</span>`):`<span class="coc-no">N/A</span>`}</td>
+      <td>${l.qa?`<span class="badge b-am" style="font-size:10px">⚑ ${l.qa_r||'Flagged'}</span>`:`<span style="color:var(--color-text-tertiary);font-size:11px">None</span>`}</td>
+      <td><span class="badge ${l.status==='received'?'b-gr':l.status==='qa_hold'?'b-am':'b-gy'}">${l.status.replace('_',' ')}</span></td>
+    </tr>`).join('')}</tbody></table>
+    <div style="margin-top:14px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+      <button class="btn btn-s" onclick="${canFin?'finalizeDelivery()':''}" style="${canFin?'':'opacity:.4;cursor:not-allowed'}" ${canFin?'':'disabled'}>✓ Finalize & Close PO</button>
+      <button class="btn btn-sm" onclick="nav('coc')">Upload COC</button>
+      <button class="btn btn-sm" onclick="L.scanSubView='scanning';render()">← Back to scan</button>
+      ${!canFin?`<span style="font-size:11px;color:#791F1F">Upload missing COC documents first</span>`:''}
+    </div>
+  </div></div>`;
+}
+
+function rQAModal(){
+  const l=L.qaLine;if(!l)return'';
+  return`<div class="modal-ov"><div class="modal">
+    <div class="modal-t">QA Inspection Flag — ${l.pn}</div>
+    <div class="modal-s">${l.desc} · just scanned and committed to ERP</div>
+    <div style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:10px">Flag this item for QA inspection?</div>
+    <div style="display:flex;gap:8px;margin-bottom:14px">
+      <button class="btn" style="flex:1;padding:10px;border-color:#A32D2D" onclick="setQA(true)">⚑ Yes — flag for QA</button>
+      <button class="btn" style="flex:1;padding:10px" onclick="setQA(false)">✓ No — clear to stock</button>
+    </div>
+    <div id="qa-r-wrap" style="display:none">
+      <div class="field"><label>QA flag reason</label>
+        <select id="qa-rs" onchange="L.qaReasonInput=this.value">
+          <option value="">— select reason —</option>
+          <option>First Article Inspection required</option>
+          <option>Surface finish anomaly observed</option>
+          <option>Dimensional variance — measurement required</option>
+          <option>Shelf-life check required</option>
+          <option>COC discrepancy — hold for review</option>
+          <option>Packaging damage observed</option>
+          <option>Other — see notes below</option>
+        </select>
+      </div>
+      <div class="field"><label>Additional notes (optional)</label>
+        <input type="text" id="qa-note" placeholder="Describe the observation...">
+      </div>
+      <button class="btn btn-w btn-sm" onclick="confirmQA()">Confirm QA flag</button>
+    </div>
+  </div></div>`;
+}
+
+function rOverrideModal(){
+  const line=L.overrideLine?L.sessLines.find(l=>l.id===L.overrideLine):null;
+  const supUsers=USERS.filter(u=>CAN_OVERRIDE.includes(u.role));
+  return`<div class="modal-ov"><div class="modal">
+    <div class="modal-t">🔑 Supervisor Override</div>
+    <div class="modal-s" style="color:#791F1F">Re-authentication required. Creates an immutable audit record.</div>
+    ${line?`<div style="padding:8px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);margin-bottom:12px;font-size:12px;color:var(--color-text-primary)">Overriding: <strong>${line.pn}</strong> — ${line.desc}</div>`:`<div style="padding:8px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);margin-bottom:12px;font-size:12px;color:var(--color-text-secondary)">General session override</div>`}
+    <div class="field"><label>Supervisor account</label>
+      <select id="ov-u"><option value="">— select supervisor —</option>${supUsers.map(u=>`<option value="${u.id}">${u.name} (${RLBL[u.role]})</option>`).join('')}</select>
+    </div>
+    <div class="field"><label>Supervisor credentials</label>
+      <input id="ov-p" type="password" placeholder="Enter password to re-authenticate">
+    </div>
+    ${line?`<div class="field"><label>Field to correct</label>
+      <select id="ov-f" onchange="document.getElementById('ov-val-w').style.display='block'">
+        <option value="">— select field —</option>
+        <option value="qty">Quantity received</option>
+        <option value="sn">Serial number</option>
+        <option value="status">Item status</option>
+        <option value="qa">QA flag</option>
+      </select>
+    </div>
+    <div id="ov-val-w" style="display:none"><div class="field"><label>Corrected value</label><input id="ov-v" type="text" placeholder="Enter corrected value"></div></div>`:'' }
+    <div class="field"><label>Override reason (required)</label>
+      ${['Damaged label — identity confirmed visually','Data entry correction','Serial number transposition — physical verification done','Emergency production requirement — documented separately','QA hold cleared — inspection complete'].map(r=>`<div class="ov-rc ${r===L._ovReason?'sel':''}" onclick="L._ovReason='${r}';this.parentNode.querySelectorAll('.ov-rc').forEach(el=>el.classList.remove('sel'));this.classList.add('sel')">${r}</div>`).join('')}
+    </div>
+    <div style="display:flex;gap:8px;margin-top:4px">
+      <button class="btn btn-w btn-sm" onclick="submitOverride()">Submit override</button>
+      <button class="btn btn-sm" onclick="L.showOverride=false;L.overrideLine=null;L._ovReason='';render()">Cancel</button>
+    </div>
+  </div></div>`;
+}
+
+function rBTModal(){
+  return`<div class="modal-ov" onclick="if(event.target.classList.contains('modal-ov')){L.showBT=false;render()}"><div class="modal">
+    <div class="modal-t">📡 Bluetooth Scanner Pairing</div>
+    <div class="modal-s">Pick up any MDM-enrolled Zebra RS5100 or TC57x and scan the QR code.</div>
+    <div style="text-align:center;margin:14px 0;padding:14px;background:#fff;border-radius:var(--border-radius-md)">
+      <div style="display:inline-grid;grid-template-columns:repeat(10,9px);gap:1px;padding:8px;background:#fff;border:2px solid #e5e7eb;border-radius:4px">
+        ${[1,1,1,1,1,1,1,0,1,0,1,0,0,0,1,0,1,0,0,0,1,0,1,1,1,0,1,0,1,1,1,0,1,0,0,0,1,0,1,0,0,0,0,0,1,0,1,0,0,0,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0].map(b=>`<div style="width:9px;height:9px;background:${b?'#000':'#fff'}"></div>`).join('')}
+      </div>
+    </div>
+    ${L.btConnected?`<div style="padding:8px;background:#EAF3DE;border-radius:var(--border-radius-md);font-size:12px;color:#27500A;margin-bottom:10px">✓ ${L.btId} connected · Battery 84%</div>`:''}
+    <div style="display:flex;gap:8px"><button class="btn btn-p btn-sm" onclick="simBTPair()">Simulate pairing</button><button class="btn btn-sm" onclick="L.showBT=false;render()">Close</button></div>
+  </div></div>`;
+}
+
+function rDmgModal(){
+  const pend=L.sessLines.filter(l=>l.status==='pending');
+  return`<div class="modal-ov"><div class="modal">
+    <div class="modal-t">⚠ Flag Item Damage</div>
+    <div class="modal-s">QA, Warehouse Manager, and AP will be notified.</div>
+    <div class="field"><label>Affected item</label>
+      <select id="dmg-l">${pend.length?pend.map(l=>`<option value="${l.id}">${l.pn} — ${l.desc}</option>`).join(''):'<option>No pending items</option>'}</select>
+    </div>
+    <div class="field"><label>Damage type</label>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px">
+        ${['Packaging damage','Item damage','Missing components','Tamper evidence'].map(t=>`<button class="dmg-btn ${L.dmgType===t?'sel':''}" onclick="L.dmgType='${t}';render()">${t}</button>`).join('')}
+      </div>
+    </div>
+    <div class="field"><label>Notes (optional)</label><textarea id="dmg-n" rows="2" placeholder="Describe damage...">${L.dmgNote}</textarea></div>
+    <div style="display:flex;gap:8px"><button class="btn btn-d btn-sm" onclick="submitDmg()">Submit flag</button><button class="btn btn-sm" onclick="L.showDmg=false;render()">Cancel</button></div>
+  </div></div>`;
+}
+
+// ─── CSAT MODAL — emoji only, no NPS here ────────────────────
+function rCSAT(){
+  return`<div class="modal-ov"><div class="modal" style="text-align:center">
+    <div style="font-size:16px;font-weight:500;color:var(--color-text-primary);margin-bottom:3px">How was this receive session?</div>
+    <div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:6px">${L.activePO?.number} · Session complete</div>
+    <div style="font-size:10px;color:var(--color-text-tertiary);margin-bottom:18px">Captured after every session · Results visible to Warehouse Manager and Admin only</div>
+    <div style="display:flex;justify-content:center;gap:10px;margin-bottom:16px">
+      ${[['😞',1,'Bad'],['😐',2,'OK'],['🙂',3,'Good'],['😄',4,'Great'],['🤩',5,'Perfect']].map(([e,s,lbl])=>`
+        <div onclick="submitCsat(${s})" style="cursor:pointer;padding:10px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary)" onmouseover="this.style.background='var(--color-background-secondary)'" onmouseout="this.style.background=''">
+          <div style="font-size:26px">${e}</div>
+          <div style="font-size:10px;color:var(--color-text-secondary);margin-top:3px">${lbl}</div>
+        </div>`).join('')}
+    </div>
+    <button class="btn btn-sm" onclick="skipCsat()">Skip</button>
+  </div></div>`;
+}
+
+// ─── NPS MODAL — separate from CSAT, bimonthly cadence ───────
+function rNPSModal(){
+  return`<div class="modal-ov"><div class="modal">
+    <div class="modal-t">How likely are you to recommend QuickReceive?</div>
+    <div class="modal-s">This is a bi-monthly survey — asked every 60 days, not after every session. Your response shapes the product roadmap.</div>
+    <div style="font-size:12px;color:var(--color-text-primary);margin-bottom:12px;font-weight:500">On a scale of 0–10, how likely are you to recommend QuickReceive to a colleague?</div>
+    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px">
+      <div class="nps-detractor" style="display:flex;gap:4px;flex-wrap:wrap">
+        ${[0,1,2,3,4,5,6].map(n=>`<button class="nps-btn ${L.npsSelected===n?'sel':''}" onclick="L.npsSelected=${n};render()">${n}</button>`).join('')}
+      </div>
+      <div class="nps-promoter" style="display:flex;gap:4px;flex-wrap:wrap">
+        ${[7,8,9,10].map(n=>`<button class="nps-btn ${L.npsSelected===n?'sel':''}" onclick="L.npsSelected=${n};render()">${n}</button>`).join('')}
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--color-text-tertiary);margin-bottom:14px">
+      <span>0 = Not at all likely</span><span>10 = Extremely likely</span>
+    </div>
+    ${L.npsSelected!==null?`<div style="padding:8px;background:${L.npsSelected>=9?'#EAF3DE':L.npsSelected>=7?'#E6F1FB':'#FCEBEB'};border-radius:var(--border-radius-md);font-size:11px;color:${L.npsSelected>=9?'#27500A':L.npsSelected>=7?'#0C447C':'#791F1F'};margin-bottom:12px">
+      ${L.npsSelected>=9?'Promoter — thank you for the strong endorsement':''}${L.npsSelected>=7&&L.npsSelected<9?'Passive — what would move this to a 9 or 10?':''}${L.npsSelected<7?'Detractor — we take this seriously. What can we improve?':''}
+    </div>`:''}
+    <div style="display:flex;gap:8px">
+      <button class="btn btn-p btn-sm" onclick="submitNPS()" style="${L.npsSelected===null?'opacity:.4;cursor:not-allowed':''}" ${L.npsSelected===null?'disabled':''}>Submit</button>
+      <button class="btn btn-sm" onclick="L.showNPS=false;L.npsSelected=null;closeSession()">Skip</button>
+    </div>
+  </div></div>`;
+}
+
+// ─── ANALYTICS — CSAT + NPS restricted to WH Manager + Admin ─
+function rAnalytics(){
+  const cr=SH.csat;
+  const npsData=SH.npsResponses;
+  const {score:nps,promoters,passives,detractors,total:npsTotal}=calcNPS(npsData);
+  const avg=cr.length?+(cr.reduce((a,c)=>a+c.score,0)/cr.length).toFixed(1):0;
+  const dist=[1,2,3,4,5].map(s=>cr.filter(c=>c.score===s).length);
+  const mx=Math.max(...dist,1);
+  const sh=SH.hist;
+  const avgT=sh.length?+(sh.reduce((a,s)=>a+s.duration,0)/sh.length).toFixed(1):0;
+  const compR=sh.length?+(sh.reduce((a,s)=>a+s.received/s.total,0)/sh.length*100).toFixed(0):0;
+  return`
+    <div class="g4" style="margin-bottom:14px">
+      <div class="mc"><div class="mc-l">Avg CSAT (${cr.length} responses)</div><div class="mc-v" style="color:#185FA5">${avg}/5</div><div class="mc-s" style="color:var(--color-text-secondary)">Target ≥4.0</div></div>
+      <div class="mc">
+        <div class="mc-l">NPS score (${npsTotal} responses)</div>
+        <div class="mc-v" style="color:${nps>=50?'#27500A':nps>=0?'#185FA5':'#A32D2D'}">${nps>0?'+':''}${nps}</div>
+        <div class="mc-s" style="color:var(--color-text-secondary)">${promoters}P · ${passives}Pa · ${detractors}D · Target ≥30</div>
+      </div>
+      <div class="mc"><div class="mc-l">Session completion</div><div class="mc-v" style="color:#27500A">${compR}%</div><div class="mc-s" style="color:var(--color-text-secondary)">Target ≥95%</div></div>
+      <div class="mc"><div class="mc-l">Avg receive time</div><div class="mc-v">${avgT} min</div><div class="mc-s" style="color:var(--color-text-secondary)">Target ≤5 min</div></div>
+    </div>
+    <div class="g2">
+      <div class="card">
+        <div class="st">CSAT distribution (per-session feedback)</div>
+        <div style="font-size:10px;color:var(--color-text-tertiary);margin-bottom:10px">Captured after every completed delivery session</div>
+        ${[5,4,3,2,1].map(s=>`<div class="bar-r">
+          <span style="font-size:14px;width:22px">${['😞','😐','🙂','😄','🤩'][s-1]}</span>
+          <div class="bar-b"><div class="bar-f" style="width:${Math.round(dist[s-1]/mx*100)}%;background:${s>=4?'#639922':s===3?'#BA7517':'#E24B4A'}"></div></div>
+          <span style="font-size:11px;color:var(--color-text-secondary);width:50px;text-align:right">${dist[s-1]} (${cr.length?Math.round(dist[s-1]/cr.length*100):0}%)</span>
+        </div>`).join('')}
+      </div>
+      <div class="card">
+        <div class="st">NPS breakdown (bi-monthly survey)</div>
+        <div style="font-size:10px;color:var(--color-text-tertiary);margin-bottom:10px">Captured every 60 days · separate from per-session CSAT</div>
+        <div style="display:flex;gap:8px;margin-bottom:12px">
+          <div style="flex:1;text-align:center;padding:10px;background:#EAF3DE;border-radius:var(--border-radius-md)">
+            <div style="font-size:20px;font-weight:500;color:#27500A">${promoters}</div>
+            <div style="font-size:10px;color:#3B6D11">Promoters (9–10)</div>
+          </div>
+          <div style="flex:1;text-align:center;padding:10px;background:#E6F1FB;border-radius:var(--border-radius-md)">
+            <div style="font-size:20px;font-weight:500;color:#0C447C">${passives}</div>
+            <div style="font-size:10px;color:#185FA5">Passives (7–8)</div>
+          </div>
+          <div style="flex:1;text-align:center;padding:10px;background:#FCEBEB;border-radius:var(--border-radius-md)">
+            <div style="font-size:20px;font-weight:500;color:#791F1F">${detractors}</div>
+            <div style="font-size:10px;color:#A32D2D">Detractors (0–6)</div>
+          </div>
+        </div>
+        <table><thead><tr><th>User</th><th>Score</th><th>Category</th><th>Date</th></tr></thead>
+        <tbody>${npsData.map(n=>`<tr>
+          <td>${n.user}</td>
+          <td style="font-weight:500">${n.nps}/10</td>
+          <td><span class="badge ${n.nps>=9?'b-gr':n.nps>=7?'b-bl':'b-rd'}">${n.label}</span></td>
+          <td style="color:var(--color-text-tertiary)">${n.date}</td>
+        </tr>`).join('')}</tbody></table>
+      </div>
+    </div>
+    <div class="card" style="margin-top:0">
+      <div class="st">Session history (${sh.length} sessions)</div>
+      <table><thead><tr><th>PO</th><th>Vendor</th><th>User</th><th>Items</th><th>Duration</th><th>Scan success</th></tr></thead>
+      <tbody>${sh.slice(0,10).map(s=>`<tr>
+        <td style="font-weight:500">${s.poNumber}</td><td style="color:var(--color-text-secondary)">${s.vendor}</td><td>${s.user}</td>
+        <td>${s.received}/${s.total}</td><td>${s.duration.toFixed(1)} min</td>
+        <td style="color:${s.scanSuccess>=.9?'#27500A':'#633806'}">${(s.scanSuccess*100).toFixed(0)}%</td>
+      </tr>`).join('')}</tbody></table>
+    </div>
+  `;
+}
+
+function rAudit(){
+  return`<div class="card">
+    <div class="st">Immutable audit log <span class="badge b-gy">WORM · 7yr retention</span></div>
+    ${!SH.audit.length?`<div style="text-align:center;padding:28px;color:var(--color-text-tertiary);font-size:12px">No audit events yet</div>`:
+    `<div style="max-height:520px;overflow-y:auto">
+      ${SH.audit.slice(0,100).map(a=>`<div style="display:flex;gap:9px;padding:6px 0;border-bottom:0.5px solid var(--color-border-tertiary)">
+        <span style="font-size:11px;color:var(--color-text-tertiary);flex-shrink:0;width:68px">${a.time}</span>
+        <div><span style="font-size:11px;font-weight:500;color:var(--color-text-primary)">${a.ev}</span>${a.ai?' <span class="badge b-bl" style="font-size:9px">AI</span>':''}
+        <div style="font-size:11px;color:var(--color-text-secondary)">${a.det}</div>
+        <div style="font-size:10px;color:var(--color-text-tertiary)">${a.user}</div></div>
+      </div>`).join('')}
+    </div>`}
+  </div>`;
+}
+
+function rCOC(){
+  return`<div class="card">
+    <div class="st">COC Upload — Certificate of Conformance</div>
+    <div style="font-size:12px;color:var(--color-text-secondary);margin-bottom:14px">Auto-rotate → perspective correction → deskew → OCR → auto-match to ERP line.</div>
+    ${L.activePO&&L.sessLines.length?`<div class="field"><label>Link to PO line</label>
+      <select id="coc-ls" onchange="L.cocTargetLine=this.value">
+        <option value="">— auto-detect from extracted P/N —</option>
+        ${L.sessLines.filter(l=>l.coc_req).map(l=>`<option value="${l.id}" ${l.id===L.cocTargetLine?'selected':''}>${l.pn} — ${l.coc_ok?'✓ COC attached':'COC required'}</option>`).join('')}
+      </select>
+    </div>`:''}
+    ${!L.cocFile?`
+      <div style="border:1.5px dashed var(--color-border-secondary);border-radius:var(--border-radius-lg);padding:36px;text-align:center;cursor:pointer" onclick="mockCOCUpload()">
+        <div style="font-size:22px;margin-bottom:7px">⊞</div>
+        <div style="font-weight:500;font-size:13px;color:var(--color-text-primary)">Click to upload or photograph document</div>
+        <div style="font-size:11px;color:var(--color-text-tertiary);margin-top:4px">PDF, JPEG, PNG · Max 20MB</div>
+      </div>
+    `:`
+      <div style="font-weight:500;font-size:12px;color:var(--color-text-primary);margin-bottom:10px">Processing: ${L.cocFile}</div>
+      ${['Edge detection & document boundary','Perspective warp (4-point homography)','Deskew & rotation (Hough transform)','Auto-crop + contrast enhancement','Google Document AI field extraction'].map((s,i)=>`
+        <div class="pstp">
+          <div class="sic ${i<L.cocStage?'sic-done':i===L.cocStage?'sic-act':'sic-pnd'}">${i<L.cocStage?'✓':i+1}</div>
+          <div><div style="font-size:12px;font-weight:500;color:var(--color-text-primary)">${s}</div>
+          <div style="font-size:10px;color:var(--color-text-secondary)">${i<L.cocStage?'complete':i===L.cocStage?'processing…':'waiting'}</div></div>
+        </div>`).join('')}
+      ${L.cocResult?`
+        <div style="padding:10px;background:${L.cocResult.matched?'#EAF3DE':'#FAEEDA'};border-radius:var(--border-radius-md);margin-top:10px;border:0.5px solid ${L.cocResult.matched?'#97C459':'#EF9F27'}">
+          <div style="font-weight:500;color:${L.cocResult.matched?'#27500A':'#633806'};margin-bottom:3px;font-size:12px">${L.cocResult.matched?'✓ Auto-matched and attached':'⚠ Manual review needed'}</div>
+          <div style="font-size:11px;color:${L.cocResult.matched?'#3B6D11':'#633806'}">Extracted P/N: ${L.cocResult.pn} · Confidence: ${Math.round(L.cocResult.conf*100)}%</div>
+        </div>
+        <div style="display:flex;gap:7px;margin-top:10px">
+          <button class="btn btn-sm" onclick="L.cocFile=null;L.cocResult=null;L.cocStage=0;render()">Upload another</button>
+          ${L.activePO?`<button class="btn btn-p btn-sm" onclick="L.scanSubView='review';nav('scan')">Back to review →</button>`:''}
+        </div>
+      `:''}
+    `}
+  </div>`;
+}
+
+function rConfig(){
+  if(!CAN_CONFIG.includes(L.user?.role))return`<div class="card"><div style="color:#791F1F;font-size:13px">Access denied — Admin role required</div></div>`;
+  const c=L.config;
+  function cr(lbl,path,val,desc){return`<div style="display:flex;gap:12px;padding:9px 0;border-bottom:0.5px solid var(--color-border-tertiary);align-items:flex-start"><div style="flex:0 0 200px"><div style="font-size:12px;font-weight:500;color:var(--color-text-primary)">${lbl}</div><div style="font-size:10px;color:var(--color-text-tertiary);margin-top:2px">${desc}</div></div><input style="max-width:110px" type="number" step="any" value="${val}" onchange="updCfg('${path}',this.value)"></div>`;}
+  return`<div>
+    <div class="card">
+      <div style="font-size:12px;font-weight:500;color:#791F1F;margin-bottom:10px">⚑ Admin configuration panel</div>
+      <div style="font-size:10px;font-weight:500;color:var(--color-text-tertiary);margin-bottom:3px">ERP</div>
+      ${cr('Commit latency (ms)','erp.latencyMs',c.erp.latencyMs,'Simulated ERP round-trip.')}
+      ${cr('Failure rate (0–1)','erp.failRate',c.erp.failRate,'Simulated API error rate.')}
+      <div style="font-size:10px;font-weight:500;color:var(--color-text-tertiary);margin:10px 0 3px">Scanner</div>
+      ${cr('Scan delay (ms)','scanner.delayMs',c.scanner.delayMs,'Delay between auto-scans.')}
+      ${cr('Success rate (0–1)','scanner.successRate',c.scanner.successRate,'Probability of clean decode.')}
+      ${cr('Partial decode rate (0–1)','scanner.partialRate',c.scanner.partialRate,'Triggers AI match flow.')}
+      ${cr('AI threshold (0–1)','scanner.aiThresh',c.scanner.aiThresh,'One-tap accept threshold.')}
+      <div style="font-size:10px;font-weight:500;color:var(--color-text-tertiary);margin:10px 0 3px">OCR / COC</div>
+      ${cr('Pipeline time (ms)','ocr.procMs',c.ocr.procMs,'Simulated OCR processing.')}
+      ${cr('Auto-match threshold (0–1)','ocr.autoMatchThresh',c.ocr.autoMatchThresh,'Min confidence for auto-attach.')}
+    </div>
+    <div class="card">
+      <div style="font-size:12px;font-weight:500;color:var(--color-text-primary);margin-bottom:8px">Role permissions matrix</div>
+      <table><thead><tr><th>Role</th><th>Receive/Scan</th><th>QA Queue</th><th>Analytics/CSAT</th><th>Config</th><th>Override</th></tr></thead>
+      <tbody>
+        ${[['receiver','Receiver','✓','—','—','—','—'],
+           ['senior_receiver','Senior Receiver','✓','—','—','—','✓'],
+           ['qa_inspector','QA Inspector','—','✓','—','—','—'],
+           ['warehouse_manager','WH Manager','—','—','✓','—','✓'],
+           ['admin','Admin','✓','✓','✓','✓','✓']].map(([role,lbl,...perms])=>`<tr>
+          <td><span class="badge ${RCOL[role]}">${lbl}</span></td>
+          ${perms.map(p=>`<td style="color:${p==='✓'?'#27500A':'#D3D1C7'};font-weight:${p==='✓'?'500':'400'}">${p}</td>`).join('')}
+        </tr>`).join('')}
+      </tbody></table>
+    </div>
+  </div>`;
+}
+
+// ─── ACTIONS ─────────────────────────────────────────────────
+function nav(v){
+  if(L.scanning)stopScan();
+  if(v==='config'&&!CAN_CONFIG.includes(L.user?.role)){toast('Config restricted to Admin role','e');return;}
+  if(v==='analytics'&&!CAN_ANALYTICS.includes(L.user?.role)){toast('Analytics restricted to WH Manager and Admin','e');return;}
+  if(v==='scan'&&!CAN_RECEIVE.includes(L.user?.role)){toast('Scan restricted to Receiver roles','e');return;}
+  L.view=v;render();
+}
 function logout(){if(L.scanning)stopScan();pushAudit('AUTH_SIGNOUT','User signed out');L.view='login';L.user=null;L.loginStep='user';L.selUser=null;L.activePO=null;L.sessLines=[];L.scanSubView='select';L.pausedSess=[];render();}
-async function factoryReset(){if(!confirm('Reset ALL data? This clears all sessions, audit log, and CSAT data.'))return;if(L.scanning)stopScan();SH={pos:DC(DEFAULT_POS),audit:[],notifs:[],csat:seedCsat(),hist:seedHist()};await saveShared(Object.values(SK));L.activePO=null;L.sessLines=[];L.scanLog=[];L.pausedSess=[];L.view='dashboard';toast('Factory reset complete','w');render();}
+async function factoryReset(){if(!confirm('Reset all shared data?'))return;if(L.scanning)stopScan();SH={pos:DC(DEFAULT_POS),audit:[],notifs:[],csat:seedCsat(),npsResponses:seedNPS(),hist:seedHist()};await saveShared();L.activePO=null;L.sessLines=[];L.scanLog=[];L.pausedSess=[];L.view='dashboard';toast('Factory reset complete','w');render();}
 function doOkta(){const u=document.getElementById('sel-u').value;if(!u){toast('Select an account','w');return;}L.selUser=USERS.find(x=>x.id===u);L.loginStep='mfa';render();}
-async function doMFA(){const code=document.getElementById('mfa-in')?.value||'';if(code.length<6){toast('Enter 6-digit code','w');return;}await loadShared();L.user=L.selUser;L.view='dashboard';pushAudit('AUTH_SUCCESS',`Okta SAML 2.0 + TOTP \u2014 ${L.user.name} (${RLBL[L.user.role]})`);toast(`Welcome, ${L.user.name}`,'s');render();}
+async function doMFA(){const code=document.getElementById('mfa-in')?.value||'';if(code.length<6){toast('Enter 6-digit code','w');return;}await loadShared();L.user=L.selUser;L.view='dashboard';pushAudit('AUTH_SUCCESS',`Okta SAML 2.0 + TOTP — ${L.user.name} (${RLBL[L.user.role]})`);toast(`Welcome, ${L.user.name}`,'s');render();}
 function filterPOs(q){const avail=SH.pos.filter(p=>p.status!=='complete');const f=avail.filter(p=>!q||p.number.toLowerCase().includes(q.toLowerCase())||p.vendor.toLowerCase().includes(q.toLowerCase()));const el=document.getElementById('po-res');if(el)el.innerHTML=rPOList(f);}
-function openPO(id){const po=SH.pos.find(p=>p.id===id);if(!po)return;if(po.status==='not_started'){po.status='in_progress';saveShared([SK.POS]);}L.activePO=po;L.activeSess={id:'sess-'+Date.now().toString(36),startedAt:Date.now()};L.sessLines=DC(po.lines);L.scanLog=[];L.pfStage=0;L.scanSubView='prefetch';L.view='scan';pushAudit('SESSION_START',`Opened ${po.number} \u2014 ${po.vendor}`);let st=0;const iv=setInterval(()=>{st++;L.pfStage=st;render();if(st>=5)clearInterval(iv);},370);render();}
+function openPO(id){const po=SH.pos.find(p=>p.id===id);if(!po)return;if(!CAN_RECEIVE.includes(L.user?.role)){toast('Receive access restricted','e');return;}if(po.status==='not_started'){po.status='in_progress';saveShared([SK.POS]);}L.activePO=po;L.activeSess={id:'sess-'+Date.now().toString(36),startedAt:Date.now()};L.sessLines=DC(po.lines);L.scanLog=[];L.pfStage=0;L.scanSubView='prefetch';L.view='scan';pushAudit('SESSION_START',`Opened ${po.number} — ${po.vendor}`);let st=0;const iv=setInterval(()=>{st++;L.pfStage=st;render();if(st>=5)clearInterval(iv);},370);render();}
 function openReview(id){const po=SH.pos.find(p=>p.id===id);if(!L.activePO||L.activePO.id!==id){L.activePO=po;L.activeSess={id:'rev-'+Date.now().toString(36),startedAt:Date.now()};L.sessLines=DC(po.lines);}L.scanSubView='review';L.view='scan';render();}
 function toggleScan(){L.scanning?stopScan():startAutoScan();}
 function startAutoScan(){L.scanning=true;runScan();render();}
@@ -276,16 +923,16 @@ async function runScan(){
   const res=simScan(line);L.lastConf=res.conf;
   if(res.ok){await doCommit(line,res.conf,'camera',false);}
   else if(res.partial){stopScan();showAIInline(getAICands(L.sessLines),res.raw);return;}
-  else{toast(`Low confidence (${Math.round(res.conf*100)}%) \u2014 try manual entry`,'w');pushAudit('SCAN_LOW_CONF',`${line.pn} \u2014 ${Math.round(res.conf*100)}%`);L.scanLine=null;}
+  else{toast(`Low confidence (${Math.round(res.conf*100)}%) — try manual entry`,'w');pushAudit('SCAN_LOW_CONF',`${line.pn} — ${Math.round(res.conf*100)}%`);L.scanLine=null;}
   L.scanTimer=setTimeout(runScan,200);
 }
 function showAIInline(cands,partial){
   render();const content=document.querySelector('.content');if(!content)return;
   const div=document.createElement('div');div.id='ai-p';div.className='card';div.style.marginBottom='12px';
-  div.innerHTML=`<div style="color:#791F1F;font-size:13px;font-weight:500;margin-bottom:4px">\u26a0 Partial scan \u2014 AI matching active</div><div style="font-size:12px;color:var(--color-text-secondary);margin-bottom:10px">Captured: <code style="background:var(--color-background-secondary);padding:1px 5px;border-radius:3px">${partial}</code></div>${cands.map((cd,i)=>`<div class="aic ${i===0?'best':''}" onclick="acceptAI(${i})"><div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">${i===0?`<span class="badge b-gr">Best</span>`:''}<span style="font-weight:500;font-size:12px;color:var(--color-text-primary)">${cd.line.pn}</span><span style="padding:2px 7px;border-radius:10px;font-size:10px;font-weight:500;background:${cd.conf>.85?'#C0DD97':cd.conf>.6?'#FAC775':'#F7C1C1'};color:${cd.conf>.85?'#27500A':cd.conf>.6?'#633806':'#791F1F'}">${Math.round(cd.conf*100)}%</span></div><div style="font-size:11px;color:var(--color-text-secondary)">${cd.line.desc} \u00b7 ${cd.why}</div></div>`).join('')}<div style="display:flex;gap:7px;margin-top:10px"><button class="btn btn-sm" onclick="dismissAI();submitManualPrompt()">\u2328 Manual entry</button><button class="btn btn-sm" onclick="dismissAI()">\u00d7 Cancel</button></div>`;
+  div.innerHTML=`<div style="color:#791F1F;font-size:13px;font-weight:500;margin-bottom:4px">⚠ Partial scan — AI matching active</div><div style="font-size:12px;color:var(--color-text-secondary);margin-bottom:10px">Captured: <code style="background:var(--color-background-secondary);padding:1px 5px;border-radius:3px">${partial}</code></div>${cands.map((cd,i)=>`<div class="aic ${i===0?'best':''}" onclick="acceptAI(${i})"><div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">${i===0?`<span class="badge b-gr">Best</span>`:''}<span style="font-weight:500;font-size:12px;color:var(--color-text-primary)">${cd.line.pn}</span><span style="padding:2px 7px;border-radius:10px;font-size:10px;font-weight:500;background:${cd.conf>.85?'#C0DD97':cd.conf>.6?'#FAC775':'#F7C1C1'};color:${cd.conf>.85?'#27500A':cd.conf>.6?'#633806':'#791F1F'}">${Math.round(cd.conf*100)}%</span></div><div style="font-size:11px;color:var(--color-text-secondary)">${cd.line.desc} · ${cd.why}</div></div>`).join('')}<div style="display:flex;gap:7px;margin-top:10px"><button class="btn btn-sm" onclick="dismissAI();submitManualPrompt()">⌨ Manual entry</button><button class="btn btn-sm" onclick="dismissAI()">✕ Cancel</button></div>`;
   window._aiCands=cands;content.insertBefore(div,content.firstChild);
 }
-window.acceptAI=function(idx){const cd=window._aiCands[idx];dismissAI();pushAudit('AI_MATCH_ACCEPT',`${cd.line.pn} \u2014 conf ${Math.round(cd.conf*100)}% \u2014 rank ${idx+1}`,true);doCommit(cd.line,cd.conf,'AI-partial-match',true).then(()=>{if(L.scanning)runScan();else render();});};
+window.acceptAI=function(idx){const cd=window._aiCands[idx];dismissAI();pushAudit('AI_MATCH_ACCEPT',`${cd.line.pn} — conf ${Math.round(cd.conf*100)}% — rank ${idx+1}`,true);doCommit(cd.line,cd.conf,'AI-partial-match',true).then(()=>{if(L.scanning)runScan();else render();});};
 function dismissAI(){const p=document.getElementById('ai-p');if(p)p.remove();}
 function submitManualPrompt(){const pn=prompt('Enter part number or serial number:');if(!pn)return;processManual(pn);}
 function submitManual(){const pn=(L.manualBC||'').trim();if(!pn){toast('Enter a part number','w');return;}processManual(pn);L.manualBC='';}
@@ -298,27 +945,103 @@ async function doCommit(line,conf,method,ai){
     if(po){const pl=po.lines.find(l=>l.id===line.id);if(pl){pl.rcvd=line.qty;pl.status='received';}checkPOComplete(po.id);}
     await saveShared([SK.POS]);
     L.scanLog.unshift({pn:line.pn,ok:true,method,latency:lat,conf:Math.round(conf*100),ai,qa:false});
-    pushAudit(`SCAN_COMMIT${ai?'_AI':''}${method==='manual-entry'?'_MANUAL':''}`,`${line.pn} \u2014 ${method} \u2014 conf ${Math.round(conf*100)}% \u2014 ERP ${lat}ms`,ai);
-    toast(`\u2713 ${line.pn} committed (${lat}ms)`,'s');L.scanLine=null;
+    pushAudit(`SCAN_COMMIT${ai?'_AI':''}${method==='manual-entry'?'_MANUAL':''}`,`${line.pn} — ${method} — conf ${Math.round(conf*100)}% — ERP ${lat}ms`,ai);
+    toast(`✓ ${line.pn} committed (${lat}ms)`,'s');L.scanLine=null;
     L.showQA=true;L.qaLine=line;L.qaReasonInput='';render();
-  }catch(e){toast('ERP commit failed \u2014 retry queued','e');pushAudit('SCAN_FAIL',`${line.pn} \u2014 ${e.message}`);render();}
+  }catch(e){toast('ERP commit failed — retry queued','e');pushAudit('SCAN_FAIL',`${line.pn} — ${e.message}`);render();}
 }
 function setQA(yes){if(yes){document.getElementById('qa-r-wrap').style.display='block';}else{L.showQA=false;L.qaLine=null;toast('Item cleared to stock','s');if(L.scanning)runScan();else render();}}
-async function confirmQA(){const reason=document.getElementById('qa-rs')?.value||document.getElementById('qa-note')?.value||'QA inspection flagged';if(!reason){toast('Select a reason','w');return;}const line=L.qaLine;line.qa=true;line.qa_r=reason;line.status='qa_hold';const po=SH.pos.find(p=>p.id===L.activePO?.id);if(po){const pl=po.lines.find(l=>l.id===line.id);if(pl){pl.qa=true;pl.qa_r=reason;pl.status='qa_hold';}}await saveShared([SK.POS]);L.scanLog[0]&&(L.scanLog[0].qa=true);pushAudit('QA_FLAG_SET',`${line.pn} \u2014 ${reason}`);pushNotif('\u26d1',`QA flag: ${line.pn} \u2014 ${reason}`);toast('QA flag set \u2014 routed to inspection queue','w');L.showQA=false;L.qaLine=null;if(L.scanning)runScan();else render();}
-async function submitOverride(){const userId=document.getElementById('ov-u')?.value||'';const pin=document.getElementById('ov-p')?.value||'';const reason=L._ovReason||'';const field=document.getElementById('ov-f')?.value||'';const val=document.getElementById('ov-v')?.value||'';if(!userId){toast('Select supervisor account','w');return;}if(pin.length<4){toast('Enter credentials','w');return;}if(!reason){toast('Select override reason','w');return;}const sup=USERS.find(u=>u.id===userId);const line=L.overrideLine?L.sessLines.find(l=>l.id===L.overrideLine):null;if(line&&field){if(field==='qty')line.rcvd=parseInt(val)||line.rcvd;if(field==='sn')line.sn=val;if(field==='status')line.status=val;if(field==='qa'){line.qa=val==='true';line.qa_r=val==='true'?'Supervisor override':'';line.status=val==='true'?'qa_hold':'received';}const po=SH.pos.find(p=>p.id===L.activePO?.id);if(po){const pl=po.lines.find(l=>l.id===line.id);if(pl)Object.assign(pl,{rcvd:line.rcvd,sn:line.sn,status:line.status,qa:line.qa,qa_r:line.qa_r});}await saveShared([SK.POS]);}pushAudit('SUPERVISOR_OVERRIDE',`${line?line.pn:'Session'} \u2014 ${field||'general'} \u2014 Supervisor: ${sup?.name} \u2014 ${reason}`);toast(`Override committed \u2014 audit event created by ${sup?.name}`,'w');L.showOverride=false;L.overrideLine=null;L._ovReason='';render();}
-function pauseSess(){if(!L.activeSess)return;stopScan();const left=L.sessLines.filter(l=>l.status==='pending').length;L.pausedSess.push({id:L.activeSess.id,poId:L.activePO.id,poNum:L.activePO.number,lines:DC(L.sessLines),left});pushAudit('SESSION_PAUSED',`${L.activePO.number} \u2014 ${left} items remaining`);toast('Session paused \u2014 resume from any device','i');L.activeSess=null;L.activePO=null;L.sessLines=[];L.view='dashboard';render();}
+async function confirmQA(){
+  const reason=document.getElementById('qa-rs')?.value||document.getElementById('qa-note')?.value||'QA inspection flagged';
+  if(!reason){toast('Select a reason','w');return;}
+  const line=L.qaLine;line.qa=true;line.qa_r=reason;line.status='qa_hold';
+  const po=SH.pos.find(p=>p.id===L.activePO?.id);
+  if(po){const pl=po.lines.find(l=>l.id===line.id);if(pl){pl.qa=true;pl.qa_r=reason;pl.status='qa_hold';}}
+  await saveShared([SK.POS]);
+  L.scanLog[0]&&(L.scanLog[0].qa=true);
+  pushAudit('QA_FLAG_SET',`${line.pn} — ${reason}`);
+  pushNotif('⚑',`QA flag: ${line.pn} — ${reason}`);
+  toast('QA flag set — routed to inspection queue','w');
+  L.showQA=false;L.qaLine=null;
+  if(L.scanning)runScan();else render();
+}
+async function submitOverride(){
+  const userId=document.getElementById('ov-u')?.value||'';const pin=document.getElementById('ov-p')?.value||'';
+  const reason=L._ovReason||'';const field=document.getElementById('ov-f')?.value||'';const val=document.getElementById('ov-v')?.value||'';
+  if(!userId){toast('Select supervisor account','w');return;}if(pin.length<4){toast('Enter credentials','w');return;}if(!reason){toast('Select override reason','w');return;}
+  const sup=USERS.find(u=>u.id===userId);const line=L.overrideLine?L.sessLines.find(l=>l.id===L.overrideLine):null;
+  if(line&&field){
+    if(field==='qty')line.rcvd=parseInt(val)||line.rcvd;if(field==='sn')line.sn=val;if(field==='status')line.status=val;
+    if(field==='qa'){line.qa=val==='true';line.qa_r=val==='true'?'Supervisor override':'';line.status=val==='true'?'qa_hold':'received';}
+    const po=SH.pos.find(p=>p.id===L.activePO?.id);if(po){const pl=po.lines.find(l=>l.id===line.id);if(pl)Object.assign(pl,{rcvd:line.rcvd,sn:line.sn,status:line.status,qa:line.qa,qa_r:line.qa_r});}
+    await saveShared([SK.POS]);
+  }
+  pushAudit('SUPERVISOR_OVERRIDE',`${line?line.pn:'Session'} — ${field||'general'} — Supervisor: ${sup?.name} — ${reason}`);
+  toast(`Override committed — ${sup?.name}`,'w');L.showOverride=false;L.overrideLine=null;L._ovReason='';render();
+}
+function pauseSess(){if(!L.activeSess)return;stopScan();const left=L.sessLines.filter(l=>l.status==='pending').length;L.pausedSess.push({id:L.activeSess.id,poId:L.activePO.id,poNum:L.activePO.number,lines:DC(L.sessLines),left});pushAudit('SESSION_PAUSED',`${L.activePO.number} — ${left} items remaining`);toast('Session paused','i');L.activeSess=null;L.activePO=null;L.sessLines=[];L.view='dashboard';render();}
 function resumeLatest(){const ps=L.pausedSess[0];if(ps)resumeSess(ps.id);}
-function resumeSess(id){const ps=L.pausedSess.find(p=>p.id===id);if(!ps)return;const po=SH.pos.find(p=>p.id===ps.poId);L.activeSess={id:ps.id,startedAt:Date.now()};L.activePO=po;L.sessLines=ps.lines;L.scanLog=[];L.scanSubView='scanning';L.pausedSess=L.pausedSess.filter(p=>p.id!==id);pushAudit('SESSION_RESUMED',`${po.number} \u2014 ${ps.left} items remaining`);toast(`Resumed \u2014 ${ps.left} items left`,'s');L.view='scan';render();}
-async function finalizeDelivery(){const po=SH.pos.find(p=>p.id===L.activePO.id);const dur=(Date.now()-L.activeSess.startedAt)/60000;SH.hist.unshift({id:L.activeSess.id,poNumber:po.number,vendor:po.vendor,user:L.user.name,total:L.sessLines.length,received:L.sessLines.filter(l=>l.status!=='pending').length,scanSuccess:L.scanLog.filter(s=>s.ok).length/(L.scanLog.length||1),aiAssists:L.scanLog.filter(s=>s.ai).length,duration:dur});if(po)po.status='complete';pushAudit('DELIVERY_FINALIZED',`${po.number} \u2014 ${L.sessLines.length} lines \u2014 ${dur.toFixed(1)} min`);pushNotif('\u2713',`PO finalized &amp; closed: ${po.number}`);pushNotif('\u2b06','ERP 3-way match signal sent \u00b7 AP notified');pushNotif('\uD83C\uDFED','Production planning notified \u2014 parts available');await saveShared([SK.POS,SK.HIST,SK.AUDIT,SK.NOTIF]);L.showCsat=true;render();}
-async function submitCsat(score){SH.csat.unshift({id:'c'+Date.now(),score,nps:Math.random()>.5?Math.floor(Math.random()*11):null,user:L.user.name,poNumber:L.activePO?.number,time:new Date().toLocaleTimeString()});await saveShared([SK.CSAT]);pushAudit('CSAT_SUBMITTED',`Score: ${score}/5`);toast('Thanks for your feedback!','s');closeSession();}
-function skipCsat(){closeSession();}
-function closeSession(){stopScan();L.activeSess=null;L.activePO=null;L.sessLines=[];L.scanLog=[];L.showCsat=false;L.scanSubView='select';L.view='dashboard';render();}
-function mockCOCUpload(){const names=['COC_HAM-FLT-2241.pdf','COC_Parker_Hannifin.pdf','cert_conformance.pdf'];L.cocFile=names[Math.floor(Math.random()*names.length)];L.cocStage=0;L.cocResult=null;render();let st=0;const iv=setInterval(async()=>{st++;L.cocStage=st;if(st>=5){clearInterval(iv);const conf=0.65+Math.random()*.33;const matched=conf>=L.config.ocr.autoMatchThresh;const tl=L.sessLines?.find(l=>l.id===L.cocTargetLine);const pn=tl?.pn||'HAM-FLT-2241-B';L.cocResult={pn,conf,matched};if(matched&&tl){tl.coc_ok=true;const po=SH.pos.find(p=>p.id===L.activePO?.id);if(po){const pl=po.lines.find(l=>l.id===tl.id);if(pl)pl.coc_ok=true;}await saveShared([SK.POS]);}pushAudit('COC_PROCESSED',`${L.cocFile} \u2014 conf ${Math.round(conf*100)}% \u2014 ${matched?'auto-matched':'manual review'}`);}render();},L.config.ocr.procMs/5);}
-function simBTPair(){toast('Pairing in progress\u2026','i');setTimeout(()=>{L.btConnected=true;L.btId='RS5100-'+String(Math.floor(Math.random()*9000)+1000);pushAudit('BT_PAIRED',`${L.btId} paired to session ${L.activeSess?.id||'pre-session'}`);toast(`\u2713 ${L.btId} paired`,'s');L.showBT=false;render();},1800);}
-function submitDmg(){if(!L.dmgType){toast('Select damage type','w');return;}const lineId=document.getElementById('dmg-l')?.value;const line=L.sessLines.find(l=>l.id===lineId);const note=document.getElementById('dmg-n')?.value||'';pushAudit('DAMAGE_FLAGGED',`${line?.pn} \u2014 ${L.dmgType}${note?' \u2014 '+note:''}`);pushNotif('\u26a0',`Damage: ${line?.pn} \u2014 ${L.dmgType}`);pushNotif('\u23f8',`AP invoice hold: ${L.activePO?.number}`);saveShared([SK.AUDIT,SK.NOTIF]);L.showDmg=false;L.dmgType='';L.dmgNote='';toast('Damage flagged \u2014 QA, WM, AP notified','w');render();}
+function resumeSess(id){const ps=L.pausedSess.find(p=>p.id===id);if(!ps)return;const po=SH.pos.find(p=>p.id===ps.poId);L.activeSess={id:ps.id,startedAt:Date.now()};L.activePO=po;L.sessLines=ps.lines;L.scanLog=[];L.scanSubView='scanning';L.pausedSess=L.pausedSess.filter(p=>p.id!==id);pushAudit('SESSION_RESUMED',`${po.number} — ${ps.left} items remaining`);toast(`Resumed — ${ps.left} items left`,'s');L.view='scan';render();}
+async function finalizeDelivery(){
+  const po=SH.pos.find(p=>p.id===L.activePO.id);const dur=(Date.now()-L.activeSess.startedAt)/60000;
+  SH.hist.unshift({id:L.activeSess.id,poNumber:po.number,vendor:po.vendor,user:L.user.name,total:L.sessLines.length,received:L.sessLines.filter(l=>l.status!=='pending').length,scanSuccess:L.scanLog.filter(s=>s.ok).length/(L.scanLog.length||1),aiAssists:L.scanLog.filter(s=>s.ai).length,duration:dur});
+  if(po)po.status='complete';
+  pushAudit('DELIVERY_FINALIZED',`${po.number} — ${L.sessLines.length} lines — ${dur.toFixed(1)} min`);
+  pushNotif('✓',`PO finalized: ${po.number}`);
+  await saveShared([SK.POS,SK.HIST,SK.AUDIT,SK.NOTIF]);
+  L.showCsat=true;render();
+}
+async function submitCsat(score){
+  SH.csat.unshift({id:'c'+Date.now(),score,nps:null,user:L.user.name,poNumber:L.activePO?.number,time:new Date().toLocaleTimeString()});
+  await saveShared([SK.CSAT]);
+  pushAudit('CSAT_SUBMITTED',`Score: ${score}/5`);
+  toast('Thanks for your feedback!','s');
+  L.showCsat=false;
+  // Show NPS modal ~every 60 days — simulated as ~1 in 3 sessions for demo
+  if(Math.random()<0.4){L.showNPS=true;L.npsSelected=null;render();}
+  else{closeSession();}
+}
+function skipCsat(){L.showCsat=false;closeSession();}
+async function submitNPS(){
+  if(L.npsSelected===null)return;
+  const label=L.npsSelected>=9?'Promoter':L.npsSelected>=7?'Passive':'Detractor';
+  SH.npsResponses.unshift({id:'n'+Date.now(),nps:L.npsSelected,label,user:L.user.name,date:new Date().toISOString().slice(0,10)});
+  await saveShared([SK.NPS]);
+  pushAudit('NPS_SUBMITTED',`Score: ${L.npsSelected}/10 — ${label}`);
+  toast('NPS response recorded — thank you','s');
+  L.showNPS=false;L.npsSelected=null;closeSession();
+}
+function closeSession(){stopScan();L.activeSess=null;L.activePO=null;L.sessLines=[];L.scanLog=[];L.showCsat=false;L.showNPS=false;L.scanSubView='select';L.view='dashboard';render();}
+function mockCOCUpload(){
+  const names=['COC_HAM-FLT-2241.pdf','COC_Parker_Hannifin.pdf','cert_conformance.pdf'];
+  L.cocFile=names[Math.floor(Math.random()*names.length)];L.cocStage=0;L.cocResult=null;render();
+  let st=0;const iv=setInterval(async()=>{st++;L.cocStage=st;if(st>=5){clearInterval(iv);const conf=0.65+Math.random()*.33;const matched=conf>=L.config.ocr.autoMatchThresh;const tl=L.sessLines?.find(l=>l.id===L.cocTargetLine);const pn=tl?.pn||'HAM-FLT-2241-B';L.cocResult={pn,conf,matched};if(matched&&tl){tl.coc_ok=true;const po=SH.pos.find(p=>p.id===L.activePO?.id);if(po){const pl=po.lines.find(l=>l.id===tl.id);if(pl)pl.coc_ok=true;}await saveShared([SK.POS]);}pushAudit('COC_PROCESSED',`${L.cocFile} — conf ${Math.round(conf*100)}% — ${matched?'auto-matched':'manual review'}`);}render();},L.config.ocr.procMs/5);
+}
+function simBTPair(){toast('Pairing in progress…','i');setTimeout(()=>{L.btConnected=true;L.btId='RS5100-'+String(Math.floor(Math.random()*9000)+1000);pushAudit('BT_PAIRED',`${L.btId} paired`);toast(`✓ ${L.btId} paired`,'s');L.showBT=false;render();},1800);}
+function submitDmg(){if(!L.dmgType){toast('Select damage type','w');return;}const lineId=document.getElementById('dmg-l')?.value;const line=L.sessLines.find(l=>l.id===lineId);const note=document.getElementById('dmg-n')?.value||'';pushAudit('DAMAGE_FLAGGED',`${line?.pn} — ${L.dmgType}${note?' — '+note:''}`);pushNotif('⚠',`Damage: ${line?.pn}`);saveShared([SK.AUDIT,SK.NOTIF]);L.showDmg=false;L.dmgType='';L.dmgNote='';toast('Damage flagged','w');render();}
 function updCfg(path,val){const parts=path.split('.');let obj=L.config;for(let i=0;i<parts.length-1;i++)obj=obj[parts[i]];obj[parts[parts.length-1]]=parseFloat(val)||0;toast(`Config: ${path} = ${val}`,'i');}
+
+// QA Inspector actions
+async function qaRelease(lineId,poId){
+  const po=SH.pos.find(p=>p.id===poId);if(!po)return;
+  const line=po.lines.find(l=>l.id===lineId);if(!line)return;
+  line.status='received';line.qa=false;
+  pushAudit('QA_RELEASED',`${line.pn} — released to stock after inspection`);
+  pushNotif('✓',`QA hold released: ${line.pn}`);
+  await saveShared([SK.POS,SK.AUDIT,SK.NOTIF]);
+  toast(`✓ ${line.pn} released to stock`,'s');render();
+}
+async function qaReject(lineId,poId){
+  const po=SH.pos.find(p=>p.id===poId);if(!po)return;
+  const line=po.lines.find(l=>l.id===lineId);if(!line)return;
+  if(!confirm(`Reject ${line.pn} and return to vendor? This will trigger an NCR and update the vendor quality record.`))return;
+  line.status='rejected';line.qa=false;
+  pushAudit('QA_REJECTED',`${line.pn} — rejected, return to vendor initiated`);
+  pushNotif('✗',`QA rejected: ${line.pn} — vendor return initiated`);
+  pushNotif('📋',`NCR created for ${line.pn} — vendor quality record updated`);
+  await saveShared([SK.POS,SK.AUDIT,SK.NOTIF]);
+  toast(`${line.pn} rejected — NCR created`,'e');render();
+}
 
 loadShared().then(()=>render());
 </script>
-</body>
-</html>
